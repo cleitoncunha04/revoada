@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revoada · Arquitetura das APIs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/config.js"></script>
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+    #diagram text { font-family: Montserrat, system-ui, sans-serif; }
+    .svc:hover rect.box { stroke: #154324; stroke-width: 2; }
+  </style>
+</head>
+<body class="min-h-screen bg-[#f6f6f4] font-sans text-neutral-800">
+  <header class="border-b border-neutral-200 bg-white">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center gap-4 px-6 py-5">
+      <a href="index.html" class="flex items-center gap-1 text-sm text-neutral-500 hover:text-revoada-800"><i class="ti ti-arrow-left"></i> Mapa de telas</a>
+      <div class="ml-2">
+        <h1 class="text-xl font-bold">Arquitetura das APIs</h1>
+        <p class="text-sm text-neutral-500">Gateway, microsserviços, banco por schema e eventos pelo broker</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl space-y-8 px-6 py-8">
+    <!-- Diagrama -->
+    <section class="rounded border border-neutral-200 bg-white p-4">
+      <div class="overflow-x-auto">
+        <svg id="diagram" viewBox="0 0 1200 790" class="min-w-[960px]" role="img" aria-label="Diagrama da arquitetura das APIs da Revoada">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#404040"/></marker>
+            <marker id="arrow-event" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#dc2626"/></marker>
+            <marker id="arrow-s3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#d97706"/></marker>
+          </defs>
+
+          <!-- Navegador / APP HUB -->
+          <rect x="470" y="24" width="260" height="64" rx="5" fill="#EEE5E9" stroke="#737373"/>
+          <text x="600" y="50" text-anchor="middle" font-size="15" font-weight="700" fill="#262626">APP HUB (navegador)</text>
+          <text x="600" y="70" text-anchor="middle" font-size="11" fill="#525252">shell Quasar + micro-frontends</text>
+
+          <!-- APP HUB <-> API HUB -->
+          <line x1="560" y1="88" x2="560" y2="166" stroke="#404040" stroke-width="1.8" marker-end="url(#arrow)"/>
+          <text x="552" y="132" text-anchor="end" font-size="11" font-weight="600" fill="#404040">HTTPS /api/*</text>
+          <line x1="640" y1="170" x2="640" y2="92" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrow-event)"/>
+          <text x="648" y="132" font-size="11" font-weight="600" fill="#dc2626">SSE /events (notificações)</text>
+
+          <!-- Upload direto para o S3 -->
+          <path d="M470 56 C 330 56, 245 90, 245 166" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="2 4" marker-end="url(#arrow-s3)"/>
+          <text x="462" y="46" text-anchor="end" font-size="11" font-weight="600" fill="#b45309">upload/download direto (URL pré-assinada)</text>
+
+          <!-- S3 -->
+          <rect x="150" y="170" width="190" height="70" rx="5" fill="#fef3c7" stroke="#d97706"/>
+          <text x="245" y="198" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">S3 / MinIO</text>
+          <text x="245" y="218" text-anchor="middle" font-size="11" fill="#92400e">vídeos, PDFs, apresentações</text>
+
+          <!-- API HUB -->
+          <rect x="390" y="170" width="420" height="100" rx="5" fill="#154324"/>
+          <text x="600" y="198" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">API HUB · gateway</text>
+          <text x="600" y="222" text-anchor="middle" font-size="11" fill="#dff5d8">proxy · valida JWT (JWKS em cache) · rate limit · CORS</text>
+          <text x="600" y="240" text-anchor="middle" font-size="11" fill="#dff5d8">remove cabeçalhos do cliente · adiciona x-request-id</text>
+          <text x="600" y="258" text-anchor="middle" font-size="11" fill="#87E174">escuta notification.* e envia por SSE</text>
+
+          <!-- Distribuição do proxy -->
+          <line x1="600" y1="270" x2="600" y2="320" stroke="#404040" stroke-width="1.8"/>
+          <line x1="103" y1="320" x2="1097" y2="320" stroke="#404040" stroke-width="1.8"/>
+          <rect x="608" y="286" width="178" height="20" fill="#ffffff"/>
+          <text x="614" y="300" font-size="11" font-weight="600" fill="#404040">proxy HTTP · /api/&lt;módulo&gt;</text>
+          <g id="drops"></g>
+
+          <!-- Media gera URL pré-assinada -->
+          <line x1="300" y1="378" x2="300" y2="244" stroke="#d97706" stroke-width="2" stroke-dasharray="2 4" marker-end="url(#arrow-s3)"/>
+          <rect x="306" y="336" width="72" height="30" fill="#ffffff"/>
+          <text x="310" y="348" font-size="10" font-weight="600" fill="#b45309">gera URL</text>
+          <text x="310" y="361" font-size="10" font-weight="600" fill="#b45309">pré-assinada</text>
+
+          <!-- JWKS -->
+          <text x="110" y="350" font-size="10" font-weight="700" fill="#154324">🔑 JWKS</text>
+          <text x="110" y="363" font-size="9" fill="#3f9a5a">chave pública</text>
+
+          <!-- Serviços -->
+          <g id="services"></g>
+
+          <!-- PostgreSQL -->
+          <rect x="30" y="530" width="1140" height="88" rx="5" fill="#f0f9ff" stroke="#0284c7"/>
+          <g id="schemas"></g>
+
+          <!-- Redis Streams -->
+          <rect x="30" y="650" width="1140" height="50" rx="5" fill="#fef2f2" stroke="#dc2626"/>
+          <text x="600" y="672" text-anchor="middle" font-size="14" font-weight="800" fill="#991b1b">Redis Streams · broker de eventos</text>
+          <text x="600" y="690" text-anchor="middle" font-size="11" fill="#991b1b">publish / subscribe · consumer groups · ack · também usado como cache</text>
+          <g id="events"></g>
+
+          <!-- notification.* → HUB -->
+          <path d="M30 675 H16 V255 H386" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrow-event)"/>
+          <text x="12" y="470" font-size="11" font-weight="600" fill="#dc2626" transform="rotate(-90 12 470)" text-anchor="middle">notification.*</text>
+
+          <!-- Rótulo do PostgreSQL por cima das linhas de evento -->
+          <rect x="38" y="597" width="492" height="16" fill="#f0f9ff"/>
+          <text x="44" y="609" font-size="11" font-weight="700" fill="#075985">PostgreSQL 18 · um schema por serviço (nenhum serviço lê o de outro)</text>
+
+          <!-- Legenda -->
+          <g transform="translate(30 740)">
+            <line x1="0" y1="10" x2="36" y2="10" stroke="#404040" stroke-width="1.8" marker-end="url(#arrow)"/>
+            <text x="46" y="14" font-size="12" fill="#404040">HTTP síncrono (espera resposta)</text>
+            <line x1="270" y1="10" x2="306" y2="10" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrow-event)"/>
+            <text x="316" y="14" font-size="12" fill="#404040">evento assíncrono (publica ↓ / consome ↑)</text>
+            <line x1="600" y1="10" x2="636" y2="10" stroke="#d97706" stroke-width="2" stroke-dasharray="2 4" marker-end="url(#arrow-s3)"/>
+            <text x="646" y="14" font-size="12" fill="#404040">arquivos (URL pré-assinada)</text>
+            <rect x="860" y="0" width="30" height="20" rx="5" fill="#dff5d8" stroke="#3f9a5a"/>
+            <text x="875" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#154324">M1</text>
+            <text x="898" y="14" font-size="12" fill="#404040">marco em que o serviço entra</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Tabela de serviços -->
+    <section class="rounded border border-neutral-200 bg-white">
+      <div class="border-b border-neutral-100 p-5">
+        <h2 class="font-bold">Serviços</h2>
+        <p class="text-sm text-neutral-500">Cada serviço valida o JWT sozinho (defesa em profundidade) e só acessa o próprio schema.</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[56rem] text-left text-sm">
+          <thead class="bg-neutral-50 text-xs uppercase tracking-wider text-neutral-500">
+            <tr><th class="px-5 py-3">Serviço</th><th class="px-5 py-3">Responsabilidade</th><th class="px-5 py-3">Publica</th><th class="px-5 py-3">Consome</th><th class="px-5 py-3">Marco</th></tr>
+          </thead>
+          <tbody id="svc-table" class="divide-y divide-neutral-100"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Fluxos -->
+    <section class="grid gap-6 lg:grid-cols-2">
+      <div class="rounded border border-neutral-200 bg-white p-5">
+        <h2 class="font-bold">Fluxo: aluno termina um teste</h2>
+        <ol class="mt-4 space-y-3 text-sm">
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-neutral-800 text-xs font-bold text-white">1</span><span><b>POST /api/assessment/attempts/:id/submit</b> → API HUB valida o JWT e repassa ao Assessment.</span></li>
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-neutral-800 text-xs font-bold text-white">2</span><span>Assessment confere o tempo, corrige, grava no schema <code>assessment</code> e responde o aluno.</span></li>
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-rose-600 text-xs font-bold text-white">3</span><span>Publica <code>attempt.submitted</code> e <code>attempt.graded</code> no Redis Streams.</span></li>
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-rose-600 text-xs font-bold text-white">4</span><span><b>Skills</b> consome <code>attempt.graded</code> e recalcula as aptidões. <b>Gamification</b> consome <code>attempt.submitted</code> e dá as penas (sem ver a nota).</span></li>
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-rose-600 text-xs font-bold text-white">5</span><span>Gamification conclui a missão e publica <code>notification.mission-completed</code>.</span></li>
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-revoada-800 text-xs font-bold text-white">6</span><span>API HUB consome <code>notification.*</code> e envia pelo SSE ao APP HUB, que avisa o <code>&lt;rv-missions&gt;</code>.</span></li>
+        </ol>
+      </div>
+      <div class="rounded border border-neutral-200 bg-white p-5">
+        <h2 class="font-bold">Fluxo: professor publica um vídeo</h2>
+        <ol class="mt-4 space-y-3 text-sm">
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-neutral-800 text-xs font-bold text-white">1</span><span><b>POST /api/media/uploads</b> → Media valida o papel "professor" e devolve uma URL pré-assinada (PUT, 15 min).</span></li>
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-amber-500 text-xs font-bold text-white">2</span><span>O navegador envia o arquivo <b>direto para o S3</b>. Os 400 MB nunca passam pelo gateway.</span></li>
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-neutral-800 text-xs font-bold text-white">3</span><span><b>POST /api/media/uploads/:id/complete</b> → Media confere se o objeto existe no bucket e grava os metadados.</span></li>
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-rose-600 text-xs font-bold text-white">4</span><span>Publica <code>material.published</code>. Catalog consome e atualiza os contadores do tópico.</span></li>
+          <li class="flex gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-amber-500 text-xs font-bold text-white">5</span><span>O aluno pede <b>GET /api/media/materials/:id/download</b> e recebe uma URL pré-assinada temporária para assistir.</span></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // [nome, linha 1, linha 2, schema, publica?, consome?, marco, publica (texto), consome (texto)]
+    const services = [
+      ['Identity', 'cadastro, login, papéis', 'assina JWT · JWKS', 'identity', true, false, 'M1', 'user.registered, teacher.approved', '—'],
+      ['Media', 'URLs pré-assinadas', 'metadados e licenças', 'media', true, true, 'M2', 'material.published', 'content.hidden'],
+      ['Catalog', 'disciplinas, tópicos', 'trilhas e pré-requisitos', 'catalog', false, true, 'M2', '—', 'material.published, content.hidden'],
+      ['Progress', 'tópicos concluídos', 'tempo assistido', 'progress', true, false, 'M3', 'topic.completed, material.watched', '—'],
+      ['Assessment', 'questões e testes', 'timer e correção', 'assessment', true, false, 'M4', 'attempt.submitted, attempt.graded', '—'],
+      ['Skills', 'cálculo das aptidões', 'hexágono e detalhes', 'skills', true, true, 'M5', 'notification.skill-updated', 'attempt.graded'],
+      ['Gamification', 'penas, níveis, sequência', 'missões e conquistas', 'gamification', true, true, 'M6', 'notification.mission-completed, notification.level-up', 'user.registered, topic.completed, material.watched, attempt.submitted'],
+      ['Moderation', 'denúncias', 'ocultar conteúdo', 'moderation', true, false, 'M7', 'content.hidden', '—'],
+    ];
+
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (tag, attrs, text) => {
+      const n = document.createElementNS(NS, tag);
+      Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, v));
+      if (text) n.textContent = text;
+      return n;
+    };
+
+    const drops = document.getElementById('drops');
+    const svcs = document.getElementById('services');
+    const schemas = document.getElementById('schemas');
+    const events = document.getElementById('events');
+
+    services.forEach(([name, l1, l2, schema, pub, cons, milestone], i) => {
+      const x = 38 + i * 142;
+      const cx = x + 65;
+
+      drops.appendChild(el('line', { x1: cx, y1: 320, x2: cx, y2: 376, stroke: '#404040', 'stroke-width': 1.8, 'marker-end': 'url(#arrow)' }));
+
+      const g = el('g', { class: 'svc' });
+      g.appendChild(el('rect', { class: 'box', x, y: 380, width: 130, height: 120, rx: 5, fill: '#ffffff', stroke: '#a3a3a3' }));
+      g.appendChild(el('text', { x: cx, y: 406, 'text-anchor': 'middle', 'font-size': 14, 'font-weight': 800, fill: '#154324' }, name));
+      g.appendChild(el('text', { x: cx, y: 428, 'text-anchor': 'middle', 'font-size': 10.5, fill: '#525252' }, l1));
+      g.appendChild(el('text', { x: cx, y: 444, 'text-anchor': 'middle', 'font-size': 10.5, fill: '#525252' }, l2));
+      g.appendChild(el('rect', { x: cx - 16, y: 466, width: 32, height: 20, rx: 5, fill: '#dff5d8', stroke: '#3f9a5a' }));
+      g.appendChild(el('text', { x: cx, y: 480, 'text-anchor': 'middle', 'font-size': 10, 'font-weight': 700, fill: '#154324' }, milestone));
+      svcs.appendChild(g);
+
+      schemas.appendChild(el('line', { x1: cx, y1: 500, x2: cx, y2: 556, stroke: '#0284c7', 'stroke-width': 1.5 }));
+      schemas.appendChild(el('rect', { x: x + 15, y: 556, width: 100, height: 34, rx: 5, fill: '#ffffff', stroke: '#0284c7' }));
+      schemas.appendChild(el('text', { x: cx, y: 577, 'text-anchor': 'middle', 'font-size': 11, 'font-weight': 600, fill: '#075985', 'font-family': 'ui-monospace, monospace' }, schema));
+
+      const ex = x + 122;
+      const attrs = { stroke: '#dc2626', 'stroke-width': 1.6, 'stroke-dasharray': '6 4', fill: 'none' };
+      if (pub && cons) {
+        events.appendChild(el('line', { ...attrs, x1: ex - 4, y1: 504, x2: ex - 4, y2: 646, 'marker-end': 'url(#arrow-event)' }));
+        events.appendChild(el('line', { ...attrs, x1: ex + 4, y1: 646, x2: ex + 4, y2: 504, 'marker-end': 'url(#arrow-event)' }));
+      } else if (pub) {
+        events.appendChild(el('line', { ...attrs, x1: ex, y1: 504, x2: ex, y2: 646, 'marker-end': 'url(#arrow-event)' }));
+      } else if (cons) {
+        events.appendChild(el('line', { ...attrs, x1: ex, y1: 646, x2: ex, y2: 504, 'marker-end': 'url(#arrow-event)' }));
+      }
+    });
+
+    const code = (s) => s === '—' ? '<span class="text-neutral-400">—</span>' : s.split(', ').map((e) => `<code class="mr-1 inline-block rounded bg-rose-50 px-1.5 py-0.5 text-xs text-rose-700">${e}</code>`).join('');
+    document.getElementById('svc-table').innerHTML = services
+      .map(([name, l1, l2, schema, , , m, pubTxt, consTxt]) => `
+        <tr>
+          <td class="px-5 py-3"><p class="font-bold text-revoada-800">api-${name.toLowerCase()}</p><p class="text-xs text-neutral-500">schema <code>${schema}</code></p></td>
+          <td class="px-5 py-3">${l1}, ${l2}</td>
+          <td class="px-5 py-3">${code(pubTxt)}</td>
+          <td class="px-5 py-3">${code(consTxt)}</td>
+          <td class="px-5 py-3"><span class="rounded bg-revoada-100 px-2 py-0.5 text-xs font-bold text-revoada-800">${m}</span></td>
+        </tr>`)
+      .join('');
+  </script>
+</body>
+</html>

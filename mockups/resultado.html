@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revoada · Resultado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/config.js"></script>
+  <link rel="stylesheet" href="assets/base.css" />
+</head>
+<body data-page="testes" class="bg-[#f6f6f4] font-sans text-neutral-800">
+  <div class="flex min-h-screen">
+    <aside id="sidebar"></aside>
+    <div class="min-w-0 flex-1">
+      <header id="topbar"></header>
+
+      <main class="mx-auto max-w-5xl space-y-6 px-4 py-8 lg:px-8">
+        <!-- Celebração: primeiro a recompensa pela conclusão -->
+        <section class="relative overflow-hidden rounded bg-revoada-800 p-8 text-center text-white">
+          <div class="cover-pattern absolute inset-0 opacity-50"></div>
+          <div class="relative">
+            <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-revoada-300 text-3xl text-revoada-900"><i class="ti ti-confetti"></i></span>
+            <h1 class="mt-4 text-3xl font-extrabold">Teste concluído!</h1>
+            <p class="mt-2 text-revoada-100">Você terminou Termodinâmica em 47 minutos. Isso é o que conta.</p>
+            <div class="mt-6 flex flex-wrap justify-center gap-3">
+              <span class="flex items-center gap-2 rounded bg-white/10 px-4 py-2 font-bold"><i class="ti ti-feather text-revoada-300"></i> +80 penas</span>
+              <span class="flex items-center gap-2 rounded bg-white/10 px-4 py-2 font-bold"><i class="ti ti-target-arrow text-revoada-300"></i> Missão "Responder 10 questões" concluída</span>
+              <span class="flex items-center gap-2 rounded bg-white/10 px-4 py-2 font-bold"><i class="ti ti-flame text-orange-400"></i> Sequência: 13 dias</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <section class="rounded border border-neutral-200 bg-white p-5 text-center">
+            <p class="text-sm text-neutral-500">Acertos</p>
+            <p class="mt-1 text-4xl font-extrabold">13<span class="text-xl text-neutral-400">/20</span></p>
+          </section>
+          <section class="rounded border border-neutral-200 bg-white p-5 text-center">
+            <p class="text-sm text-neutral-500">Aptidão em Termodinâmica</p>
+            <p class="mt-1 text-4xl font-extrabold">65 <span class="text-base font-bold text-revoada-600"><i class="ti ti-trending-up"></i> +9</span></p>
+          </section>
+          <section class="rounded border border-neutral-200 bg-white p-5 text-center">
+            <p class="text-sm text-neutral-500">Física (geral)</p>
+            <p class="mt-1 text-4xl font-extrabold">86 <span class="text-base font-bold text-neutral-400">=</span></p>
+          </section>
+        </div>
+
+        <section class="rounded border border-neutral-200 bg-white p-5">
+          <h2 class="font-bold">Por habilidade</h2>
+          <ul class="mt-4 space-y-4 text-sm">
+            <li class="grid grid-cols-[10rem_1fr_3rem] items-center gap-3"><span>1ª lei</span><div class="h-2 rounded-full bg-neutral-100"><div class="h-2 w-[83%] rounded-full bg-revoada-500"></div></div><b class="text-right">5/6</b></li>
+            <li class="grid grid-cols-[10rem_1fr_3rem] items-center gap-3"><span>2ª lei e entropia</span><div class="h-2 rounded-full bg-neutral-100"><div class="h-2 w-[40%] rounded-full bg-amber-400"></div></div><b class="text-right">2/5</b></li>
+            <li class="grid grid-cols-[10rem_1fr_3rem] items-center gap-3"><span>Transformações gasosas</span><div class="h-2 rounded-full bg-neutral-100"><div class="h-2 w-[67%] rounded-full bg-revoada-500"></div></div><b class="text-right">4/6</b></li>
+            <li class="grid grid-cols-[10rem_1fr_3rem] items-center gap-3"><span>Máquinas térmicas</span><div class="h-2 rounded-full bg-neutral-100"><div class="h-2 w-[67%] rounded-full bg-revoada-500"></div></div><b class="text-right">2/3</b></li>
+          </ul>
+        </section>
+
+        <section class="rounded border border-neutral-200 bg-white">
+          <div class="flex items-center justify-between border-b border-neutral-100 p-5">
+            <h2 class="font-bold">Revisar erros (7)</h2>
+            <button class="text-sm font-semibold text-revoada-700 hover:underline">Ver todas as questões</button>
+          </div>
+          <article class="p-5">
+            <p class="text-xs font-semibold text-neutral-400">Questão 12 · 2ª lei e entropia</p>
+            <p class="mt-2 font-medium">Segundo a 2ª lei da termodinâmica, é correto afirmar que uma máquina térmica…</p>
+            <div class="mt-4 space-y-2 text-sm">
+              <p class="flex items-center gap-3 rounded border border-rose-200 bg-rose-50 p-3"><i class="ti ti-x text-rose-600"></i><span><b>Sua resposta (A):</b> pode converter todo o calor recebido em trabalho.</span></p>
+              <p class="flex items-center gap-3 rounded border border-revoada-200 bg-revoada-50 p-3"><i class="ti ti-check text-revoada-700"></i><span><b>Correta (C):</b> sempre rejeita parte do calor para uma fonte fria.</span></p>
+            </div>
+            <details class="mt-3 rounded bg-neutral-50 p-3 text-sm">
+              <summary class="cursor-pointer font-semibold text-revoada-800">Ver explicação do professor</summary>
+              <p class="mt-2 text-neutral-600">Pelo enunciado de Kelvin-Planck, nenhuma máquina operando em ciclo converte integralmente calor em trabalho…</p>
+            </details>
+            <a href="aula.html" class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-revoada-700 hover:underline"><i class="ti ti-player-play"></i> Revisar o tópico "2ª lei e entropia"</a>
+          </article>
+        </section>
+
+        <div class="flex flex-wrap justify-end gap-3">
+          <a href="aptidoes.html" class="rounded border border-neutral-300 bg-white px-5 py-2.5 text-sm font-semibold hover:bg-neutral-50"><i class="ti ti-chart-radar"></i> Ver minhas aptidões</a>
+          <a href="disciplina.html" class="rounded bg-revoada-800 px-5 py-2.5 text-sm font-semibold text-white hover:bg-revoada-700">Voltar à trilha</a>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="assets/layout.js"></script>
+</body>
+</html>

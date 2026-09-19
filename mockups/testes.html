@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revoada · Testes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/config.js"></script>
+  <link rel="stylesheet" href="assets/base.css" />
+</head>
+<body data-page="testes" class="bg-[#f6f6f4] font-sans text-neutral-800">
+  <div class="flex min-h-screen">
+    <aside id="sidebar"></aside>
+    <div class="min-w-0 flex-1">
+      <header id="topbar"></header>
+
+      <main class="mx-auto max-w-7xl space-y-8 px-4 py-8 lg:px-8">
+        <div>
+          <h1 class="text-2xl font-bold sm:text-3xl">Testes</h1>
+          <p class="mt-1 text-neutral-500">Coloque seus conhecimentos à prova. Terminar um teste sempre vale penas, seja qual for a nota.</p>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[1fr_24rem]">
+          <!-- Lista de testes -->
+          <div class="space-y-6">
+            <div class="flex flex-wrap gap-2 text-sm font-semibold">
+              <button class="rounded bg-revoada-800 px-4 py-2 text-white">Recomendados</button>
+              <button class="rounded border border-neutral-300 bg-white px-4 py-2">Por habilidade</button>
+              <button class="rounded border border-neutral-300 bg-white px-4 py-2">Por disciplina</button>
+              <button class="rounded border border-neutral-300 bg-white px-4 py-2">Simulados</button>
+              <button class="rounded border border-neutral-300 bg-white px-4 py-2">Histórico</button>
+            </div>
+
+            <section class="rounded border border-amber-300 bg-amber-50 p-5">
+              <div class="flex flex-wrap items-center gap-4">
+                <span class="grid h-12 w-12 place-items-center rounded bg-amber-400 text-2xl text-white"><i class="ti ti-refresh"></i></span>
+                <div class="flex-1">
+                  <p class="text-xs font-bold uppercase tracking-wider text-amber-700">Sugestão para você</p>
+                  <p class="font-bold">Revisar: Espelhos planos</p>
+                  <p class="text-sm text-neutral-600">Sua aptidão está em 52. Um teste curto ajuda a fixar.</p>
+                </div>
+                <a href="teste.html" class="rounded bg-neutral-900 px-4 py-2 text-sm font-semibold text-white">Começar · 10 min</a>
+              </div>
+            </section>
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <article class="rounded border border-neutral-200 bg-white p-5">
+                <div class="flex items-start justify-between">
+                  <span class="rounded bg-violet-100 px-2 py-0.5 text-xs font-semibold text-violet-700">Habilidade</span>
+                  <span class="text-xs text-neutral-400">Prof. Waldo de Lucca</span>
+                </div>
+                <h2 class="mt-3 font-bold">Termodinâmica</h2>
+                <p class="text-sm text-neutral-500">Física · Unidade 3</p>
+                <div class="mt-4 flex gap-4 text-sm text-neutral-600"><span><i class="ti ti-list-check"></i> 20 questões</span><span><i class="ti ti-clock"></i> 60 min</span></div>
+                <div class="mt-5 flex items-center justify-between">
+                  <span class="text-xs font-bold text-revoada-700">+80 <i class="ti ti-feather"></i> ao concluir</span>
+                  <a href="teste.html" class="rounded bg-revoada-800 px-4 py-2 text-sm font-semibold text-white hover:bg-revoada-700">Iniciar</a>
+                </div>
+              </article>
+              <article class="rounded border border-neutral-200 bg-white p-5">
+                <div class="flex items-start justify-between">
+                  <span class="rounded bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-700">Disciplina</span>
+                  <span class="text-xs text-neutral-400">Banco de 240 questões</span>
+                </div>
+                <h2 class="mt-3 font-bold">História geral</h2>
+                <p class="text-sm text-neutral-500">Todas as unidades, questões sorteadas</p>
+                <div class="mt-4 flex gap-4 text-sm text-neutral-600"><span><i class="ti ti-list-check"></i> 30 questões</span><span><i class="ti ti-clock"></i> 75 min</span></div>
+                <div class="mt-5 flex items-center justify-between">
+                  <span class="text-xs font-bold text-revoada-700">+100 <i class="ti ti-feather"></i> ao concluir</span>
+                  <a href="teste.html" class="rounded bg-revoada-800 px-4 py-2 text-sm font-semibold text-white hover:bg-revoada-700">Iniciar</a>
+                </div>
+              </article>
+              <article class="rounded border border-neutral-200 bg-white p-5">
+                <div class="flex items-start justify-between">
+                  <span class="rounded bg-sky-100 px-2 py-0.5 text-xs font-semibold text-sky-700">Simulado</span>
+                  <span class="text-xs text-neutral-400">Estilo vestibular</span>
+                </div>
+                <h2 class="mt-3 font-bold">Simulado geral #4</h2>
+                <p class="text-sm text-neutral-500">Matemática, Natureza, Humanas e Linguagens</p>
+                <div class="mt-4 flex gap-4 text-sm text-neutral-600"><span><i class="ti ti-list-check"></i> 45 questões</span><span><i class="ti ti-clock"></i> 2h</span></div>
+                <div class="mt-5 flex items-center justify-between">
+                  <span class="text-xs font-bold text-revoada-700">+150 <i class="ti ti-feather"></i> ao concluir</span>
+                  <a href="teste.html" class="rounded bg-revoada-800 px-4 py-2 text-sm font-semibold text-white hover:bg-revoada-700">Iniciar</a>
+                </div>
+              </article>
+              <article class="rounded border border-neutral-200 bg-white p-5 opacity-80">
+                <div class="flex items-start justify-between">
+                  <span class="rounded bg-violet-100 px-2 py-0.5 text-xs font-semibold text-violet-700">Habilidade</span>
+                  <span class="flex items-center gap-1 text-xs font-semibold text-revoada-700"><i class="ti ti-circle-check-filled"></i> Feito em 10/09</span>
+                </div>
+                <h2 class="mt-3 font-bold">Cinemática: MRU e MRUV</h2>
+                <p class="text-sm text-neutral-500">Física · Unidade 1</p>
+                <div class="mt-4 flex gap-4 text-sm text-neutral-600"><span><i class="ti ti-list-check"></i> 15 questões</span><span><i class="ti ti-target"></i> 14 acertos</span></div>
+                <div class="mt-5 flex items-center justify-between">
+                  <a href="resultado.html" class="text-sm font-semibold text-revoada-700 hover:underline">Ver resultado</a>
+                  <a href="teste.html" class="rounded border border-neutral-300 px-4 py-2 text-sm font-semibold hover:bg-neutral-50">Refazer</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Monte seu teste -->
+          <aside class="h-fit rounded border border-neutral-200 bg-white p-5 lg:sticky lg:top-20">
+            <h2 class="flex items-center gap-2 text-lg font-bold"><i class="ti ti-adjustments-horizontal text-revoada-600"></i> Monte seu teste</h2>
+            <p class="mt-1 text-sm text-neutral-500">As questões são sorteadas do banco dos professores.</p>
+            <form class="mt-5 space-y-4 text-sm" onsubmit="event.preventDefault(); location.href='teste.html'">
+              <label class="field">
+                <select class="field-control"><option>Física</option><option>Matemática</option><option>História</option><option>Todas (geral)</option></select>
+                <span class="field-label">Disciplina</span>
+              </label>
+              <div>
+                <span class="font-semibold">Habilidades</span>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  <label class="flex items-center gap-1.5 rounded border border-revoada-600 bg-revoada-50 px-2.5 py-1.5 font-medium"><input type="checkbox" checked class="accent-revoada-800" /> Termodinâmica</label>
+                  <label class="flex items-center gap-1.5 rounded border border-revoada-600 bg-revoada-50 px-2.5 py-1.5 font-medium"><input type="checkbox" checked class="accent-revoada-800" /> Calorimetria</label>
+                  <label class="flex items-center gap-1.5 rounded border border-neutral-300 px-2.5 py-1.5 font-medium"><input type="checkbox" class="accent-revoada-800" /> Espelhos</label>
+                  <label class="flex items-center gap-1.5 rounded border border-neutral-300 px-2.5 py-1.5 font-medium"><input type="checkbox" class="accent-revoada-800" /> MRUV</label>
+                </div>
+              </div>
+              <label class="block"><span class="flex justify-between font-semibold">Quantidade de questões <b class="text-revoada-800">20</b></span>
+                <input type="range" min="5" max="60" value="20" class="mt-2 w-full accent-revoada-800" />
+              </label>
+              <div>
+                <span class="font-semibold">Tempo</span>
+                <div class="mt-2 grid grid-cols-4 gap-2 text-center font-semibold">
+                  <label class="rounded border border-neutral-300 py-2">30m</label>
+                  <label class="rounded border-2 border-revoada-800 bg-revoada-50 py-2 text-revoada-800">60m</label>
+                  <label class="rounded border border-neutral-300 py-2">90m</label>
+                  <label class="rounded border border-neutral-300 py-2">Livre</label>
+                </div>
+              </div>
+              <label class="field">
+                <select class="field-control"><option>Misturada</option><option>Fácil</option><option>Média</option><option>Difícil</option></select>
+                <span class="field-label">Dificuldade</span>
+              </label>
+              <button class="flex w-full items-center justify-center gap-2 rounded bg-revoada-800 py-3 font-semibold text-white hover:bg-revoada-700"><i class="ti ti-player-play-filled"></i> Começar teste</button>
+            </form>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="assets/layout.js"></script>
+</body>
+</html>

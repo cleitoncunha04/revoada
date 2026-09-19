@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revoada · Entrar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/config.js"></script>
+  <link rel="stylesheet" href="assets/base.css" />
+</head>
+<body class="min-h-screen bg-white font-sans text-neutral-800">
+  <div class="grid min-h-screen lg:grid-cols-2">
+    <!-- Lado da marca: faixas verdes como na tela de login do BIRD -->
+    <aside class="relative hidden overflow-hidden bg-gradient-to-b from-revoada-300 to-white lg:block">
+      <div class="absolute inset-y-0 left-10 w-16 bg-revoada-800"></div>
+      <div class="absolute inset-y-0 left-32 w-6 bg-revoada-800/60"></div>
+      <div class="absolute inset-y-0 left-44 w-2 bg-revoada-800/30"></div>
+      <div class="relative flex h-full flex-col justify-center pl-56 pr-12">
+        <svg viewBox="0 0 32 32" class="h-16 w-16" aria-hidden="true"><rect width="32" height="32" rx="5" fill="#154324"/><path d="M5 14c2.2-2.4 4.4-2.4 5.6 0 1.2-2.4 3.4-2.4 5.6 0" stroke="#87E174" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M14 22c2.2-2.4 4.4-2.4 5.6 0 1.2-2.4 3.4-2.4 5.6 0" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M17 9c1.6-1.7 3.2-1.7 4.1 0 .9-1.7 2.5-1.7 4.1 0" stroke="#fff" stroke-opacity=".55" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+        <p class="mt-6 text-5xl font-extrabold tracking-[.18em] text-revoada-900">REVOADA</p>
+        <p class="mt-4 max-w-sm text-lg font-medium text-revoada-900/80">Um pássaro sozinho não faz verão. Aprender junto faz.</p>
+      </div>
+    </aside>
+
+    <main class="flex items-center justify-center px-6 py-12">
+      <div class="w-full max-w-md">
+        <a href="landing.html" class="mb-8 inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-revoada-800"><i class="ti ti-arrow-left"></i> Voltar</a>
+
+        <div class="mb-8 grid grid-cols-2 rounded bg-neutral-100 p-1 text-sm font-semibold">
+          <button type="button" data-tab="entrar" class="tab rounded py-2">Entrar</button>
+          <button type="button" data-tab="cadastro" class="tab rounded py-2">Criar conta</button>
+        </div>
+
+        <!-- Entrar -->
+        <section data-panel="entrar">
+          <h1 class="text-3xl font-bold">Bem-vindo de volta</h1>
+          <p class="mt-2 text-neutral-500">Sua sequência de estudos está esperando.</p>
+          <form class="mt-8 space-y-4" onsubmit="event.preventDefault(); location.href='inicio.html'">
+            <label class="field has-prefix">
+              <i class="field-prefix ti ti-mail"></i>
+              <input type="email" value="maria.silva@email.com" placeholder=" " class="field-control" />
+              <span class="field-label">E-mail</span>
+            </label>
+            <div>
+              <label class="field has-prefix has-suffix">
+                <i class="field-prefix ti ti-lock"></i>
+                <input type="password" value="minhasenha" placeholder=" " class="field-control" />
+                <span class="field-label">Senha</span>
+                <i class="field-suffix ti ti-eye"></i>
+              </label>
+              <a href="#" class="mt-2 block text-right text-sm font-medium text-revoada-700 hover:underline">Esqueci a senha</a>
+            </div>
+            <button class="w-full rounded bg-revoada-800 py-3 font-semibold text-white hover:bg-revoada-700">Entrar</button>
+          </form>
+          <div class="my-6 flex items-center gap-3 text-xs text-neutral-400"><span class="h-px flex-1 bg-neutral-200"></span>ou<span class="h-px flex-1 bg-neutral-200"></span></div>
+          <button type="button" class="flex w-full items-center justify-center gap-2 rounded border border-neutral-300 py-2.5 text-sm font-semibold hover:bg-neutral-50"><i class="ti ti-brand-google text-lg"></i> Continuar com Google</button>
+        </section>
+
+        <!-- Cadastro -->
+        <section data-panel="cadastro" hidden>
+          <h1 class="text-3xl font-bold">Crie sua conta</h1>
+          <p class="mt-2 text-neutral-500">Gratuito, para sempre.</p>
+          <form class="mt-8 space-y-4" onsubmit="event.preventDefault(); location.href='inicio.html'">
+            <label class="field has-prefix">
+              <i class="field-prefix ti ti-user"></i>
+              <input placeholder=" " class="field-control" />
+              <span class="field-label">Nome</span>
+            </label>
+            <label class="field has-prefix is-error">
+              <i class="field-prefix ti ti-mail"></i>
+              <input type="email" value="maria.silva@" placeholder=" " class="field-control" />
+              <span class="field-label">E-mail</span>
+              <span class="field-helper">Informe um e-mail válido</span>
+            </label>
+            <label class="field has-prefix has-suffix">
+              <i class="field-prefix ti ti-lock"></i>
+              <input type="password" placeholder=" " class="field-control" />
+              <span class="field-label">Senha</span>
+              <i class="field-suffix ti ti-eye-off"></i>
+              <span class="field-helper">Mínimo de 8 caracteres</span>
+            </label>
+
+            <fieldset>
+              <legend class="text-sm font-semibold">Quero…</legend>
+              <div class="mt-2 grid grid-cols-2 gap-2">
+                <label class="flex cursor-pointer items-center gap-2 rounded border-2 border-revoada-800 bg-revoada-50 p-3 text-sm font-semibold"><input type="radio" name="perfil" checked class="accent-revoada-800" /><i class="ti ti-school"></i> Estudar</label>
+                <label class="flex cursor-pointer items-center gap-2 rounded border-2 border-neutral-300 p-3 text-sm font-semibold"><input type="radio" name="perfil" class="accent-revoada-800" /><i class="ti ti-presentation"></i> Ensinar</label>
+              </div>
+              <p class="mt-2 flex items-start gap-1.5 text-xs text-neutral-500"><i class="ti ti-info-circle mt-0.5"></i><span>Contas de professor precisam de e-mail <b>@ifsp.edu.br</b> e passam por aprovação.</span></p>
+            </fieldset>
+
+            <label class="flex items-start gap-2 text-sm text-neutral-600"><input type="checkbox" class="mt-1 accent-revoada-800" /> Li e aceito os termos de uso e a política de privacidade (LGPD).</label>
+            <button class="w-full rounded bg-revoada-800 py-3 font-semibold text-white hover:bg-revoada-700">Criar conta</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function show(tab) {
+      document.querySelectorAll('[data-panel]').forEach((p) => (p.hidden = p.dataset.panel !== tab));
+      document.querySelectorAll('.tab').forEach((b) => {
+        const on = b.dataset.tab === tab;
+        b.className = 'tab rounded py-2 ' + (on ? 'bg-white text-revoada-800 shadow-sm' : 'text-neutral-500');
+      });
+    }
+    document.querySelectorAll('.tab').forEach((b) => b.addEventListener('click', () => show(b.dataset.tab)));
+    show(location.hash === '#cadastro' ? 'cadastro' : 'entrar');
+  </script>
+</body>
+</html>

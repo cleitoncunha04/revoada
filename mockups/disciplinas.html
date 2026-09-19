@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revoada · Disciplinas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/config.js"></script>
+  <link rel="stylesheet" href="assets/base.css" />
+</head>
+<body data-page="disciplinas" class="bg-[#f6f6f4] font-sans text-neutral-800">
+  <div class="flex min-h-screen">
+    <aside id="sidebar"></aside>
+    <div class="min-w-0 flex-1">
+      <header id="topbar"></header>
+
+      <main class="mx-auto max-w-7xl px-4 py-8 lg:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h1 class="text-2xl font-bold sm:text-3xl">Disciplinas</h1>
+            <p class="mt-1 text-neutral-500">48 disciplinas publicadas por professores do IFSP.</p>
+          </div>
+          <div class="flex gap-2">
+            <label class="field dense w-48" style="--field-bg:#f6f6f4">
+              <select class="field-control">
+                <option>Mais populares</option><option>Mais recentes</option><option>A–Z</option>
+              </select>
+              <span class="field-label">Ordenar por</span>
+            </label>
+            <div class="flex rounded border border-neutral-300 bg-white p-0.5">
+              <button class="grid h-8 w-8 place-items-center rounded bg-revoada-800 text-white" aria-label="Grade"><i class="ti ti-layout-grid"></i></button>
+              <button class="grid h-8 w-8 place-items-center rounded text-neutral-500" aria-label="Lista"><i class="ti ti-list"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtro por grande área -->
+        <div class="thin-scroll mt-6 flex gap-2 overflow-x-auto pb-2 text-sm font-semibold">
+          <button class="shrink-0 rounded bg-revoada-800 px-4 py-2 text-white">Todas</button>
+          <button class="flex shrink-0 items-center gap-1.5 rounded border border-neutral-300 bg-white px-4 py-2 hover:border-revoada-600"><i class="ti ti-math-function text-sky-600"></i> Matemática</button>
+          <button class="flex shrink-0 items-center gap-1.5 rounded border border-neutral-300 bg-white px-4 py-2 hover:border-revoada-600"><i class="ti ti-atom text-violet-600"></i> Natureza</button>
+          <button class="flex shrink-0 items-center gap-1.5 rounded border border-neutral-300 bg-white px-4 py-2 hover:border-revoada-600"><i class="ti ti-building-bank text-amber-600"></i> Humanas</button>
+          <button class="flex shrink-0 items-center gap-1.5 rounded border border-neutral-300 bg-white px-4 py-2 hover:border-revoada-600"><i class="ti ti-language text-rose-600"></i> Linguagens</button>
+          <button class="flex shrink-0 items-center gap-1.5 rounded border border-neutral-300 bg-white px-4 py-2 hover:border-revoada-600"><i class="ti ti-code text-revoada-600"></i> Tecnologia</button>
+          <button class="flex shrink-0 items-center gap-1.5 rounded border border-neutral-300 bg-white px-4 py-2 hover:border-revoada-600"><i class="ti ti-tools text-neutral-600"></i> Técnico</button>
+        </div>
+
+        <!-- Cards (evolução dos cards de disciplina do BIRD) -->
+        <div id="grid" class="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3"></div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const disciplinas = [
+      ['Física', 'Natureza', 'ti-atom', 'from-violet-600 to-indigo-800', 32, 'Prof. Rafael Pinheiro', 60, 1840],
+      ['Matemática', 'Matemática', 'ti-math-function', 'from-sky-500 to-sky-800', 41, 'Profa. Luciana Mota', 33, 2410],
+      ['História', 'Humanas', 'ti-building-bank', 'from-amber-500 to-orange-700', 27, 'Profa. Ana Ribeiro', 80, 1210],
+      ['Química', 'Natureza', 'ti-flask', 'from-teal-500 to-emerald-800', 25, 'Prof. Carlos Nunes', 0, 980],
+      ['Biologia', 'Natureza', 'ti-dna-2', 'from-lime-500 to-green-800', 30, 'Profa. Júlia Prado', 0, 1105],
+      ['Língua Portuguesa', 'Linguagens', 'ti-writing', 'from-rose-500 to-rose-800', 36, 'Prof. André Lima', 12, 1650],
+      ['Programação', 'Tecnologia', 'ti-code', 'from-revoada-600 to-revoada-900', 44, 'Prof. Kaique Santos', 0, 2890],
+      ['Geografia', 'Humanas', 'ti-world', 'from-cyan-500 to-blue-800', 22, 'Prof. Waldo de Lucca', 0, 760],
+      ['Inglês', 'Linguagens', 'ti-language', 'from-fuchsia-500 to-purple-800', 28, 'Profa. Beatriz Costa', 0, 1320],
+    ];
+    document.getElementById('grid').innerHTML = disciplinas
+      .map(([nome, area, icon, grad, topicos, prof, prog, alunos]) => `
+      <a href="disciplina.html" class="group overflow-hidden rounded border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
+        <div class="cover-pattern relative h-36 bg-gradient-to-br ${grad} p-4 text-white">
+          <span class="rounded bg-black/20 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider">${area}</span>
+          <i class="ti ${icon} absolute bottom-3 right-4 text-7xl opacity-25 transition group-hover:scale-110 group-hover:opacity-40"></i>
+          ${prog ? `<span class="absolute right-3 top-3 flex items-center gap-1 rounded bg-white/90 px-2 py-0.5 text-[11px] font-bold text-revoada-800"><i class="ti ti-route"></i> Em andamento</span>` : ''}
+        </div>
+        <div class="p-4">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <h2 class="font-bold group-hover:text-revoada-800">${nome}</h2>
+              <p class="text-xs text-neutral-500">${prof} e outros</p>
+            </div>
+            <button class="grid h-8 w-8 place-items-center rounded text-neutral-400 hover:bg-neutral-100" aria-label="Salvar" onclick="event.preventDefault()"><i class="ti ti-bookmark"></i></button>
+          </div>
+          <div class="mt-3 flex gap-4 text-xs text-neutral-500">
+            <span><i class="ti ti-list-tree"></i> ${topicos} tópicos</span>
+            <span><i class="ti ti-users"></i> ${alunos.toLocaleString('pt-BR')} estudando</span>
+          </div>
+          ${prog ? `<div class="mt-3 flex items-center gap-2"><div class="h-1.5 flex-1 rounded-full bg-neutral-100"><div class="h-1.5 rounded-full bg-revoada-500" style="width:${prog}%"></div></div><span class="text-xs font-semibold text-neutral-600">${prog}%</span></div>` : ''}
+        </div>
+      </a>`)
+      .join('');
+  </script>
+  <script src="assets/layout.js"></script>
+</body>
+</html>

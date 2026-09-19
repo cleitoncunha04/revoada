@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revoada · Estúdio do professor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/config.js"></script>
+  <link rel="stylesheet" href="assets/base.css" />
+</head>
+<body data-page="estudio" class="bg-[#f6f6f4] font-sans text-neutral-800">
+  <div class="flex min-h-screen">
+    <aside id="sidebar"></aside>
+    <div class="min-w-0 flex-1">
+      <header id="topbar"></header>
+
+      <main class="mx-auto max-w-7xl space-y-6 px-4 py-8 lg:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-sm font-semibold text-revoada-700"><i class="ti ti-presentation"></i> Estúdio do professor</p>
+            <h1 class="mt-1 text-2xl font-bold sm:text-3xl">Minhas disciplinas</h1>
+          </div>
+          <div class="flex gap-2">
+            <a href="prof-questoes.html" class="flex items-center gap-1.5 rounded border border-neutral-300 bg-white px-4 py-2.5 text-sm font-semibold hover:bg-neutral-50"><i class="ti ti-help-hexagon"></i> Banco de questões</a>
+            <a href="prof-material.html" class="flex items-center gap-1.5 rounded bg-revoada-800 px-4 py-2.5 text-sm font-semibold text-white hover:bg-revoada-700"><i class="ti ti-cloud-upload"></i> Publicar material</a>
+          </div>
+        </div>
+
+        <!-- Métricas -->
+        <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded border border-neutral-200 bg-white p-4"><p class="text-xs text-neutral-500">Alunos alcançados</p><p class="mt-1 text-2xl font-extrabold">2.184</p><p class="text-xs text-revoada-600"><i class="ti ti-trending-up"></i> +312 no mês</p></div>
+          <div class="rounded border border-neutral-200 bg-white p-4"><p class="text-xs text-neutral-500">Materiais publicados</p><p class="mt-1 text-2xl font-extrabold">64</p><p class="text-xs text-neutral-400">3 em rascunho</p></div>
+          <div class="rounded border border-neutral-200 bg-white p-4"><p class="text-xs text-neutral-500">Tópicos concluídos por alunos</p><p class="mt-1 text-2xl font-extrabold">9.730</p><p class="text-xs text-neutral-400">últimos 30 dias</p></div>
+          <div class="rounded border border-neutral-200 bg-white p-4"><p class="text-xs text-neutral-500">Dúvidas sem resposta</p><p class="mt-1 text-2xl font-extrabold text-amber-600">7</p><p class="text-xs text-neutral-400">responder</p></div>
+        </section>
+
+        <div class="grid gap-6 lg:grid-cols-[17rem_1fr]">
+          <!-- Disciplinas (cards pequenos, como no BIRD) -->
+          <aside class="space-y-3">
+            <a href="#" class="block overflow-hidden rounded border-2 border-revoada-800 bg-white">
+              <div class="cover-pattern flex h-16 items-center justify-between bg-gradient-to-br from-violet-600 to-indigo-800 px-4 text-white"><span class="font-bold">Física</span><i class="ti ti-atom text-3xl opacity-50"></i></div>
+              <p class="flex justify-between px-4 py-2 text-xs text-neutral-500"><span>4 unidades · 32 tópicos</span><span class="font-semibold text-revoada-700">Publicada</span></p>
+            </a>
+            <a href="#" class="block overflow-hidden rounded border border-neutral-200 bg-white hover:border-neutral-400">
+              <div class="cover-pattern flex h-16 items-center justify-between bg-gradient-to-br from-teal-500 to-emerald-800 px-4 text-white"><span class="font-bold">Química</span><i class="ti ti-flask text-3xl opacity-50"></i></div>
+              <p class="flex justify-between px-4 py-2 text-xs text-neutral-500"><span>2 unidades · 9 tópicos</span><span class="font-semibold text-amber-600">Rascunho</span></p>
+            </a>
+            <button class="flex w-full items-center justify-center gap-2 rounded border-2 border-dashed border-neutral-300 py-5 text-sm font-semibold text-neutral-500 hover:border-revoada-600 hover:text-revoada-800"><i class="ti ti-plus"></i> Nova disciplina</button>
+          </aside>
+
+          <!-- Editor da trilha -->
+          <section class="rounded border border-neutral-200 bg-white">
+            <div class="flex flex-wrap items-center gap-3 border-b border-neutral-100 p-5">
+              <div>
+                <h2 class="text-lg font-bold">Física · trilha</h2>
+                <p class="text-sm text-neutral-500">Arraste para reordenar. Pré-requisitos são sugestões, não bloqueios.</p>
+              </div>
+              <div class="ml-auto flex gap-2">
+                <button class="flex items-center gap-1.5 rounded border border-neutral-300 px-3 py-2 text-sm font-semibold hover:bg-neutral-50"><i class="ti ti-sitemap"></i> Ver grafo</button>
+                <button class="flex items-center gap-1.5 rounded border border-neutral-300 px-3 py-2 text-sm font-semibold hover:bg-neutral-50"><i class="ti ti-users"></i> Coautores</button>
+                <button class="flex items-center gap-1.5 rounded border border-neutral-300 px-3 py-2 text-sm font-semibold hover:bg-neutral-50"><i class="ti ti-settings"></i></button>
+              </div>
+            </div>
+
+            <div class="space-y-4 p-5">
+              <!-- Unidade recolhida -->
+              <div class="rounded border border-neutral-300 bg-gelo/50">
+                <div class="flex items-center gap-3 px-4 py-3">
+                  <i class="ti ti-grip-vertical cursor-grab text-neutral-400"></i>
+                  <span class="text-xs font-bold uppercase tracking-wider text-neutral-400">Unidade 1</span>
+                  <span class="font-semibold">Cinemática</span>
+                  <span class="ml-auto text-xs text-neutral-500">8 tópicos</span>
+                  <i class="ti ti-plus rotate-45 text-neutral-500"></i>
+                </div>
+              </div>
+
+              <!-- Unidade aberta (acordeão do BIRD) -->
+              <div class="rounded border-2 border-neutral-500 bg-gelo/50 shadow-[5px_5px_10px_#dcdcdc]">
+                <div class="flex items-center gap-3 border-b border-neutral-400 px-4 py-3">
+                  <i class="ti ti-grip-vertical cursor-grab text-neutral-400"></i>
+                  <span class="text-xs font-bold uppercase tracking-wider text-neutral-400">Unidade 2</span>
+                  <span class="font-semibold">Óptica geométrica</span>
+                  <span class="ml-auto text-xs text-neutral-500">6 tópicos</span>
+                  <i class="ti ti-plus text-neutral-500"></i>
+                </div>
+                <ul class="space-y-2 p-3">
+                  <li class="rounded border border-neutral-200 bg-white">
+                    <div class="flex items-center gap-3 p-3">
+                      <i class="ti ti-grip-vertical cursor-grab text-neutral-300"></i>
+                      <div class="min-w-0 flex-1">
+                        <p class="font-semibold">Espelhos esféricos</p>
+                        <p class="text-xs text-neutral-500">Pré-requisito sugerido: <span class="rounded bg-neutral-100 px-1.5 py-0.5">Reflexão e espelhos planos</span></p>
+                      </div>
+                      <span class="hidden rounded bg-revoada-50 px-2 py-0.5 text-xs font-semibold text-revoada-700 sm:inline">Publicado</span>
+                      <button class="grid h-8 w-8 place-items-center rounded hover:bg-neutral-100" aria-label="Editar"><i class="ti ti-pencil"></i></button>
+                      <button class="grid h-8 w-8 place-items-center rounded hover:bg-neutral-100" aria-label="Mais"><i class="ti ti-dots-vertical"></i></button>
+                    </div>
+                    <!-- Arquivos do tópico -->
+                    <div class="border-t border-neutral-100 bg-neutral-50/60 px-3 py-3 sm:pl-10">
+                      <ul class="space-y-1.5 text-sm">
+                        <li class="flex items-center gap-2"><i class="ti ti-video text-rose-500"></i><a href="#" class="text-sky-700 hover:underline">espelhos-esfericos.mp4</a><span class="text-xs text-neutral-400">412 MB · processado</span><button class="ml-auto text-neutral-400 hover:text-rose-600" aria-label="Remover"><i class="ti ti-x"></i></button></li>
+                        <li class="flex items-center gap-2"><i class="ti ti-presentation text-amber-500"></i><a href="#" class="text-sky-700 hover:underline">slides-espelhos.pdf</a><span class="text-xs text-neutral-400">3,2 MB</span><button class="ml-auto text-neutral-400 hover:text-rose-600" aria-label="Remover"><i class="ti ti-x"></i></button></li>
+                        <li class="flex items-center gap-2"><i class="ti ti-list-check text-revoada-600"></i><a href="prof-questoes.html" class="text-sky-700 hover:underline">10 questões vinculadas</a><span class="text-xs text-neutral-400">habilidade: Espelhos</span></li>
+                      </ul>
+                      <a href="prof-material.html" class="mt-3 inline-flex items-center gap-1.5 rounded border border-dashed border-neutral-400 px-3 py-1.5 text-xs font-semibold text-neutral-600 hover:border-revoada-600 hover:text-revoada-800"><i class="ti ti-paperclip"></i> Anexar material</a>
+                    </div>
+                  </li>
+                  <li class="flex items-center gap-3 rounded border border-neutral-200 bg-white p-3">
+                    <i class="ti ti-grip-vertical cursor-grab text-neutral-300"></i>
+                    <div class="min-w-0 flex-1"><p class="font-semibold">Refração da luz</p><p class="text-xs text-neutral-500">Pré-requisito sugerido: <span class="rounded bg-neutral-100 px-1.5 py-0.5">Espelhos esféricos</span></p></div>
+                    <span class="hidden rounded bg-revoada-50 px-2 py-0.5 text-xs font-semibold text-revoada-700 sm:inline">Publicado</span>
+                    <button class="grid h-8 w-8 place-items-center rounded hover:bg-neutral-100"><i class="ti ti-pencil"></i></button>
+                    <button class="grid h-8 w-8 place-items-center rounded hover:bg-neutral-100"><i class="ti ti-dots-vertical"></i></button>
+                  </li>
+                  <li class="flex items-center gap-3 rounded border border-neutral-200 bg-white p-3">
+                    <i class="ti ti-grip-vertical cursor-grab text-neutral-300"></i>
+                    <div class="min-w-0 flex-1"><p class="font-semibold">Lentes esféricas</p><p class="text-xs text-neutral-500">Pré-requisito sugerido: <span class="rounded bg-neutral-100 px-1.5 py-0.5">Refração da luz</span></p></div>
+                    <span class="hidden rounded bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700 sm:inline">Rascunho</span>
+                    <button class="grid h-8 w-8 place-items-center rounded hover:bg-neutral-100"><i class="ti ti-pencil"></i></button>
+                    <button class="grid h-8 w-8 place-items-center rounded hover:bg-neutral-100"><i class="ti ti-dots-vertical"></i></button>
+                  </li>
+                  <li>
+                    <button class="flex w-full items-center justify-center gap-2 rounded border border-dashed border-neutral-400 bg-white py-2.5 text-sm font-semibold text-neutral-500 hover:border-revoada-600 hover:text-revoada-800"><i class="ti ti-plus"></i> Adicionar tópico (novo ou existente)</button>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="rounded border border-neutral-300 bg-gelo/50">
+                <div class="flex items-center gap-3 px-4 py-3">
+                  <i class="ti ti-grip-vertical cursor-grab text-neutral-400"></i>
+                  <span class="text-xs font-bold uppercase tracking-wider text-neutral-400">Unidade 3</span>
+                  <span class="font-semibold">Termodinâmica</span>
+                  <span class="ml-auto text-xs text-neutral-500">7 tópicos</span>
+                  <i class="ti ti-plus rotate-45 text-neutral-500"></i>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Botão flutuante verde escuro, como no BIRD -->
+  <button class="fixed bottom-16 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-revoada-800 text-2xl text-white shadow-xl hover:bg-revoada-700 lg:right-6" aria-label="Nova unidade" title="Nova unidade">
+    <i class="ti ti-plus"></i>
+  </button>
+
+  <script src="assets/layout.js"></script>
+</body>
+</html>

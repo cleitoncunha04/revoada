@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revoada · Publicar material</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/config.js"></script>
+  <link rel="stylesheet" href="assets/base.css" />
+</head>
+<body data-page="material" class="bg-[#f6f6f4] font-sans text-neutral-800">
+  <div class="flex min-h-screen">
+    <aside id="sidebar"></aside>
+    <div class="min-w-0 flex-1">
+      <header id="topbar"></header>
+
+      <main class="mx-auto max-w-6xl space-y-6 px-4 py-8 lg:px-8">
+        <div>
+          <a href="prof-disciplinas.html" class="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-revoada-800"><i class="ti ti-arrow-left"></i> Estúdio</a>
+          <h1 class="mt-2 text-2xl font-bold sm:text-3xl">Publicar material</h1>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[1fr_20rem]">
+          <form class="space-y-6" onsubmit="event.preventDefault()">
+            <!-- Tipo -->
+            <section class="rounded border border-neutral-200 bg-white p-5">
+              <h2 class="font-bold">1. Tipo de material</h2>
+              <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-5">
+                <label class="flex cursor-pointer flex-col items-center gap-2 rounded border-2 border-revoada-800 bg-revoada-50 p-4 text-sm font-semibold text-revoada-800"><i class="ti ti-video text-2xl"></i>Videoaula</label>
+                <label class="flex cursor-pointer flex-col items-center gap-2 rounded border-2 border-neutral-200 p-4 text-sm font-semibold hover:border-neutral-400"><i class="ti ti-presentation text-2xl text-amber-500"></i>Apresentação</label>
+                <label class="flex cursor-pointer flex-col items-center gap-2 rounded border-2 border-neutral-200 p-4 text-sm font-semibold hover:border-neutral-400"><i class="ti ti-file-text text-2xl text-sky-500"></i>Artigo</label>
+                <label class="flex cursor-pointer flex-col items-center gap-2 rounded border-2 border-neutral-200 p-4 text-sm font-semibold hover:border-neutral-400"><i class="ti ti-file-pencil text-2xl text-violet-500"></i>Exercícios</label>
+                <label class="flex cursor-pointer flex-col items-center gap-2 rounded border-2 border-neutral-200 p-4 text-sm font-semibold hover:border-neutral-400"><i class="ti ti-link text-2xl text-neutral-500"></i>Link externo</label>
+              </div>
+            </section>
+
+            <!-- Upload -->
+            <section class="rounded border border-neutral-200 bg-white p-5">
+              <h2 class="font-bold">2. Arquivo</h2>
+              <div class="mt-4 flex flex-col items-center justify-center rounded border-2 border-dashed border-neutral-300 bg-neutral-50 px-6 py-10 text-center">
+                <span class="grid h-14 w-14 place-items-center rounded-full bg-revoada-100 text-2xl text-revoada-800"><i class="ti ti-cloud-upload"></i></span>
+                <p class="mt-3 font-semibold">Arraste o arquivo aqui ou <span class="text-revoada-700 underline">escolha no computador</span></p>
+                <p class="mt-1 text-xs text-neutral-500">MP4, WEBM, PDF, PPTX, DOCX · até 2 GB</p>
+              </div>
+
+              <!-- Upload em andamento (direto para o bucket via URL pré-assinada) -->
+              <div class="mt-4 rounded border border-neutral-200 p-4">
+                <div class="flex items-center gap-3">
+                  <i class="ti ti-video text-2xl text-rose-500"></i>
+                  <div class="min-w-0 flex-1">
+                    <div class="flex justify-between text-sm"><p class="truncate font-semibold">refracao-da-luz-aula.mp4</p><span class="text-neutral-500">286 / 412 MB</span></div>
+                    <div class="mt-2 h-2 rounded-full bg-neutral-100"><div class="h-2 w-[69%] rounded-full bg-revoada-500"></div></div>
+                    <p class="mt-1 text-xs text-neutral-500">Enviando… depois o vídeo é convertido para qualidades menores (360p/480p/720p).</p>
+                  </div>
+                  <button class="grid h-8 w-8 place-items-center rounded text-neutral-400 hover:bg-neutral-100" aria-label="Cancelar"><i class="ti ti-x"></i></button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Informações -->
+            <section class="space-y-4 rounded border border-neutral-200 bg-white p-5">
+              <h2 class="font-bold">3. Informações</h2>
+              <label class="field">
+                <input value="Refração da luz: lei de Snell" placeholder=" " maxlength="80" class="field-control" />
+                <span class="field-label">Título</span>
+                <span class="field-helper text-right">29/80</span>
+              </label>
+              <label class="field">
+                <textarea rows="3" placeholder=" " class="field-control">Índice de refração, lei de Snell-Descartes e reflexão total, com exemplos do dia a dia.</textarea>
+                <span class="field-label">Descrição</span>
+              </label>
+              <div class="grid gap-4 sm:grid-cols-3">
+                <label class="field"><select class="field-control"><option>Física</option></select><span class="field-label">Disciplina</span></label>
+                <label class="field"><select class="field-control"><option>Óptica geométrica</option></select><span class="field-label">Unidade</span></label>
+                <label class="field"><select class="field-control"><option>Refração da luz</option></select><span class="field-label">Tópico</span></label>
+              </div>
+              <label class="field">
+                <div class="field-control flex flex-wrap items-center gap-2 text-sm">
+                  <span class="flex items-center gap-1 rounded bg-neutral-100 px-2 py-0.5">óptica <i class="ti ti-x text-xs"></i></span>
+                  <span class="flex items-center gap-1 rounded bg-neutral-100 px-2 py-0.5">vestibular <i class="ti ti-x text-xs"></i></span>
+                  <input placeholder="adicionar…" class="min-w-24 flex-1 bg-transparent outline-none" />
+                </div>
+                <span class="field-label">Tags</span>
+                <span class="field-helper">Pressione Enter para adicionar</span>
+              </label>
+              <label class="flex items-center gap-2 text-sm"><input type="checkbox" checked class="accent-revoada-800" /> Possui legendas (acessibilidade)</label>
+            </section>
+
+            <!-- Licença -->
+            <section class="rounded border border-neutral-200 bg-white p-5">
+              <h2 class="font-bold">4. Licença de uso</h2>
+              <p class="mt-1 text-sm text-neutral-500">Define como outras pessoas podem usar o seu material.</p>
+              <div class="mt-4 space-y-2 text-sm">
+                <label class="flex items-start gap-3 rounded border-2 border-revoada-800 bg-revoada-50 p-3"><input type="radio" name="lic" checked class="mt-1 accent-revoada-800" /><span><b>CC BY-NC-SA 4.0</b> <span class="rounded bg-revoada-800 px-1.5 text-[10px] font-bold text-white">RECOMENDADA</span><br /><span class="text-neutral-600">Pode compartilhar e adaptar com crédito, sem fins comerciais e com a mesma licença.</span></span></label>
+                <label class="flex items-start gap-3 rounded border-2 border-neutral-200 p-3"><input type="radio" name="lic" class="mt-1 accent-revoada-800" /><span><b>CC BY 4.0</b><br /><span class="text-neutral-600">Qualquer uso, desde que dê o crédito.</span></span></label>
+                <label class="flex items-start gap-3 rounded border-2 border-neutral-200 p-3"><input type="radio" name="lic" class="mt-1 accent-revoada-800" /><span><b>Todos os direitos reservados</b><br /><span class="text-neutral-600">Só pode ser visto na Revoada, sem download.</span></span></label>
+              </div>
+              <label class="mt-4 flex items-start gap-2 text-sm text-neutral-600"><input type="checkbox" class="mt-1 accent-revoada-800" /> Declaro que sou autor deste material ou que tenho direito de publicá-lo.</label>
+            </section>
+
+            <div class="flex flex-wrap justify-end gap-3">
+              <button class="rounded border border-neutral-300 bg-white px-5 py-2.5 text-sm font-semibold hover:bg-neutral-50">Salvar rascunho</button>
+              <button class="rounded bg-revoada-800 px-5 py-2.5 text-sm font-semibold text-white hover:bg-revoada-700">Publicar</button>
+            </div>
+          </form>
+
+          <!-- Prévia -->
+          <aside class="h-fit space-y-4 lg:sticky lg:top-20">
+            <section class="rounded border border-neutral-200 bg-white p-4">
+              <p class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Prévia para o aluno</p>
+              <div class="mt-3 flex items-center gap-3 rounded border border-neutral-200 p-3">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded bg-rose-50 text-xl text-rose-600"><i class="ti ti-video"></i></span>
+                <div class="min-w-0"><p class="truncate text-sm font-semibold">Refração da luz: lei de Snell</p><p class="text-xs text-neutral-500">~20 min · legendado</p></div>
+              </div>
+              <p class="mt-3 flex items-center gap-1.5 text-xs text-neutral-500"><i class="ti ti-license"></i> CC BY-NC-SA 4.0</p>
+            </section>
+            <section class="rounded bg-sky-50 p-4 text-sm text-sky-900">
+              <p class="flex items-center gap-2 font-semibold"><i class="ti ti-bulb"></i> Dica</p>
+              <p class="mt-1">Vídeos curtos (até 20 min) têm muito mais conclusões. Vale dividir aulas longas em partes.</p>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="assets/layout.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revoada · Física</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/config.js"></script>
+  <link rel="stylesheet" href="assets/base.css" />
+</head>
+<body data-page="trilha" class="bg-[#f6f6f4] font-sans text-neutral-800">
+  <div class="flex min-h-screen">
+    <aside id="sidebar"></aside>
+    <div class="min-w-0 flex-1">
+      <header id="topbar"></header>
+
+      <!-- Capa -->
+      <section class="cover-pattern relative bg-gradient-to-br from-violet-600 to-indigo-900 text-white">
+        <i class="ti ti-atom pointer-events-none absolute -bottom-10 right-6 text-[14rem] opacity-10"></i>
+        <div class="relative mx-auto max-w-7xl px-4 py-10 lg:px-8">
+          <a href="disciplinas.html" class="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white"><i class="ti ti-arrow-left"></i> Disciplinas</a>
+          <div class="mt-4 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <span class="rounded bg-black/20 px-2 py-0.5 text-xs font-semibold uppercase tracking-wider">Ciências da Natureza</span>
+              <h1 class="mt-3 text-4xl font-extrabold">Física</h1>
+              <p class="mt-2 max-w-2xl text-white/80">Do movimento à luz: uma trilha pensada para quem está começando, com vídeos curtos, listas de exercícios e testes por habilidade.</p>
+              <div class="mt-4 flex items-center gap-3 text-sm">
+                <div class="flex -space-x-2">
+                  <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-indigo-800 bg-amber-300 text-xs font-bold text-amber-900">RP</span>
+                  <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-indigo-800 bg-revoada-300 text-xs font-bold text-revoada-900">WL</span>
+                  <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-indigo-800 bg-rose-300 text-xs font-bold text-rose-900">+2</span>
+                </div>
+                <span class="text-white/80">4 professores · 32 tópicos · 118 materiais</span>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="rounded bg-white/10 px-5 py-3 text-center backdrop-blur">
+                <p class="text-xs text-white/70">Sua aptidão</p>
+                <p class="text-3xl font-extrabold">86</p>
+              </div>
+              <div class="rounded bg-white/10 px-5 py-3 text-center backdrop-blur">
+                <p class="text-xs text-white/70">Progresso</p>
+                <p class="text-3xl font-extrabold">60%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <main class="mx-auto max-w-7xl px-4 py-8 lg:px-8">
+        <div class="mb-6 flex gap-1 border-b border-neutral-200 text-sm font-semibold">
+          <button class="border-b-2 border-revoada-800 px-4 py-3 text-revoada-800"><i class="ti ti-route"></i> Trilha</button>
+          <button class="px-4 py-3 text-neutral-500 hover:text-neutral-800"><i class="ti ti-list-tree"></i> Todos os tópicos</button>
+          <button class="px-4 py-3 text-neutral-500 hover:text-neutral-800"><i class="ti ti-list-check"></i> Testes</button>
+          <button class="px-4 py-3 text-neutral-500 hover:text-neutral-800"><i class="ti ti-info-circle"></i> Sobre</button>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-[1fr_20rem]">
+          <!-- Trilha -->
+          <div class="space-y-10">
+            <!-- Unidade concluída -->
+            <section>
+              <div class="flex items-center gap-3">
+                <span class="grid h-9 w-9 place-items-center rounded bg-revoada-500 text-white"><i class="ti ti-check"></i></span>
+                <div><p class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Unidade 1</p><h2 class="font-bold">Cinemática</h2></div>
+                <span class="ml-auto text-sm font-semibold text-revoada-700">Concluída · aptidão 94</span>
+              </div>
+            </section>
+
+            <!-- Unidade atual -->
+            <section>
+              <div class="flex items-center gap-3">
+                <span class="grid h-9 w-9 place-items-center rounded bg-revoada-800 text-revoada-300"><i class="ti ti-bulb"></i></span>
+                <div><p class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Unidade 2</p><h2 class="font-bold">Óptica geométrica</h2></div>
+                <span class="ml-auto text-sm text-neutral-500">3 de 6</span>
+              </div>
+
+              <ol class="relative ml-[1.125rem] mt-4 space-y-3 border-l-2 border-dashed border-neutral-300 pl-8">
+                <li class="relative">
+                  <span class="absolute -left-[2.6rem] top-4 grid h-5 w-5 place-items-center rounded-full bg-revoada-500 text-[11px] text-white"><i class="ti ti-check"></i></span>
+                  <a href="aula.html" class="flex items-center gap-4 rounded border border-neutral-200 bg-white p-4 hover:border-revoada-600">
+                    <div class="flex-1"><p class="font-semibold">Princípios da óptica</p><p class="text-xs text-neutral-500"><i class="ti ti-video"></i> 12 min · <i class="ti ti-presentation"></i> slides</p></div>
+                    <span class="rounded bg-revoada-50 px-2 py-1 text-xs font-bold text-revoada-700">Concluído</span>
+                  </a>
+                </li>
+                <li class="relative">
+                  <span class="absolute -left-[2.6rem] top-4 grid h-5 w-5 place-items-center rounded-full bg-revoada-500 text-[11px] text-white"><i class="ti ti-check"></i></span>
+                  <a href="aula.html" class="flex items-center gap-4 rounded border border-neutral-200 bg-white p-4 hover:border-revoada-600">
+                    <div class="flex-1"><p class="font-semibold">Reflexão e espelhos planos</p><p class="text-xs text-neutral-500"><i class="ti ti-video"></i> 15 min · <i class="ti ti-file-text"></i> artigo · <i class="ti ti-list-check"></i> 8 questões</p></div>
+                    <span class="rounded bg-amber-50 px-2 py-1 text-xs font-bold text-amber-700">Aptidão 52 · revisar</span>
+                  </a>
+                </li>
+                <li class="relative">
+                  <span class="absolute -left-[2.85rem] top-3 grid h-7 w-7 place-items-center rounded-full bg-revoada-800 text-sm text-revoada-300 ring-4 ring-revoada-100"><i class="ti ti-player-play-filled"></i></span>
+                  <a href="aula.html" class="block rounded border-2 border-revoada-800 bg-white p-4 shadow-md">
+                    <div class="flex flex-wrap items-center gap-4">
+                      <div class="flex-1"><p class="text-xs font-bold uppercase tracking-wider text-revoada-600">Você está aqui</p><p class="text-lg font-bold">Espelhos esféricos</p><p class="text-xs text-neutral-500"><i class="ti ti-video"></i> 18 min · <i class="ti ti-presentation"></i> slides · <i class="ti ti-list-check"></i> 10 questões</p></div>
+                      <span class="rounded bg-revoada-800 px-4 py-2 text-sm font-semibold text-white">Continuar</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="relative">
+                  <span class="absolute -left-[2.6rem] top-4 h-5 w-5 rounded-full border-2 border-neutral-300 bg-white"></span>
+                  <div class="flex items-center gap-4 rounded border border-neutral-200 bg-white p-4">
+                    <div class="flex-1"><p class="font-semibold">Refração da luz</p><p class="text-xs text-neutral-500"><i class="ti ti-video"></i> 20 min · <i class="ti ti-file-text"></i> artigo</p></div>
+                    <span class="flex items-center gap-1 text-xs text-neutral-400" title="Recomendado, não obrigatório"><i class="ti ti-arrow-back-up"></i> Recomendado: Espelhos esféricos</span>
+                  </div>
+                </li>
+                <li class="relative">
+                  <span class="absolute -left-[2.6rem] top-4 h-5 w-5 rounded-full border-2 border-neutral-300 bg-white"></span>
+                  <div class="flex items-center gap-4 rounded border border-neutral-200 bg-white p-4">
+                    <div class="flex-1"><p class="font-semibold">Lentes esféricas</p><p class="text-xs text-neutral-500"><i class="ti ti-video"></i> 22 min · <i class="ti ti-presentation"></i> slides</p></div>
+                    <span class="flex items-center gap-1 text-xs text-neutral-400"><i class="ti ti-arrow-back-up"></i> Recomendado: Refração</span>
+                  </div>
+                </li>
+                <li class="relative">
+                  <span class="absolute -left-[2.6rem] top-4 grid h-5 w-5 place-items-center rounded-full bg-amber-400 text-[11px] text-white"><i class="ti ti-trophy"></i></span>
+                  <a href="testes.html" class="flex items-center gap-4 rounded border border-amber-300 bg-amber-50 p-4 hover:border-amber-500">
+                    <div class="flex-1"><p class="font-semibold">Teste da unidade: Óptica</p><p class="text-xs text-neutral-600"><i class="ti ti-list-check"></i> 20 questões · <i class="ti ti-clock"></i> 40 min</p></div>
+                    <span class="rounded bg-white px-2 py-1 text-xs font-bold text-amber-700">+80 <i class="ti ti-feather"></i> ao concluir</span>
+                  </a>
+                </li>
+              </ol>
+            </section>
+
+            <!-- Próximas -->
+            <section class="space-y-3">
+              <div class="flex items-center gap-3 rounded border border-neutral-200 bg-white p-4">
+                <span class="grid h-9 w-9 place-items-center rounded bg-neutral-100 text-neutral-500"><i class="ti ti-flame"></i></span>
+                <div class="flex-1"><p class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Unidade 3</p><p class="font-bold">Termodinâmica</p></div>
+                <span class="text-sm text-neutral-500">7 tópicos</span>
+              </div>
+              <div class="flex items-center gap-3 rounded border border-neutral-200 bg-white p-4">
+                <span class="grid h-9 w-9 place-items-center rounded bg-neutral-100 text-neutral-500"><i class="ti ti-bolt"></i></span>
+                <div class="flex-1"><p class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Unidade 4</p><p class="font-bold">Eletricidade</p></div>
+                <span class="text-sm text-neutral-500">9 tópicos</span>
+              </div>
+            </section>
+          </div>
+
+          <!-- Lateral -->
+          <aside class="space-y-6">
+            <section class="rounded border border-neutral-200 bg-white p-5">
+              <h2 class="font-bold">Sua aptidão em Física</h2>
+              <ul class="mt-4 space-y-3 text-sm">
+                <li><div class="flex justify-between"><span>MRU</span><b>100</b></div><div class="mt-1 h-1.5 rounded-full bg-neutral-100"><div class="h-1.5 w-full rounded-full bg-revoada-500"></div></div></li>
+                <li><div class="flex justify-between"><span>MRUV</span><b>88</b></div><div class="mt-1 h-1.5 rounded-full bg-neutral-100"><div class="h-1.5 w-[88%] rounded-full bg-revoada-500"></div></div></li>
+                <li><div class="flex justify-between"><span>Espelhos</span><b class="text-amber-600">52</b></div><div class="mt-1 h-1.5 rounded-full bg-neutral-100"><div class="h-1.5 w-[52%] rounded-full bg-amber-400"></div></div></li>
+              </ul>
+              <a href="aptidoes.html" class="mt-4 block text-center text-sm font-semibold text-revoada-700 hover:underline">Ver detalhes</a>
+            </section>
+
+            <section class="rounded border border-neutral-200 bg-white p-5">
+              <h2 class="flex items-center gap-2 font-bold"><i class="ti ti-info-circle text-revoada-600"></i> Sobre a trilha</h2>
+              <p class="mt-2 text-sm text-neutral-600">A ordem é uma recomendação dos professores. Você pode abrir qualquer tópico quando quiser.</p>
+            </section>
+
+            <section class="rounded border border-neutral-200 bg-white p-5">
+              <h2 class="font-bold">Pré-requisitos sugeridos</h2>
+              <ul class="mt-3 space-y-2 text-sm">
+                <li class="flex items-center gap-2"><i class="ti ti-math-function text-sky-600"></i> Matemática · Funções <span class="ml-auto text-xs text-revoada-700">ok</span></li>
+                <li class="flex items-center gap-2"><i class="ti ti-triangle text-sky-600"></i> Matemática · Trigonometria <span class="ml-auto text-xs text-amber-600">revisar</span></li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="assets/layout.js"></script>
+</body>
+</html>

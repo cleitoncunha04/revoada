@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revoada · Aptidões</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/config.js"></script>
+  <link rel="stylesheet" href="assets/base.css" />
+</head>
+<body data-page="aptidoes" class="bg-[#f6f6f4] font-sans text-neutral-800">
+  <div class="flex min-h-screen">
+    <aside id="sidebar"></aside>
+    <div class="min-w-0 flex-1">
+      <header id="topbar"></header>
+
+      <main class="mx-auto max-w-7xl space-y-6 px-4 py-8 lg:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h1 class="text-2xl font-bold sm:text-3xl">Aptidões</h1>
+            <p class="mt-1 text-neutral-500">Calculadas a partir dos seus testes. Servem para orientar os estudos, não para te julgar.</p>
+          </div>
+          <div class="flex rounded border border-neutral-300 bg-white p-0.5 text-sm font-semibold">
+            <button class="rounded bg-revoada-800 px-3 py-1.5 text-white">Atual</button>
+            <button class="rounded px-3 py-1.5 text-neutral-500">Comparar com 30 dias atrás</button>
+          </div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[19rem_1fr]">
+          <!-- Card estilo FIFA -->
+          <div class="flex justify-center lg:block">
+            <div class="fifa-card relative w-72 bg-gradient-to-b from-[#1f5c35] via-revoada-800 to-revoada-900 px-7 pb-14 pt-8 text-white shadow-2xl">
+              <div class="cover-pattern absolute inset-0 opacity-40"></div>
+              <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-revoada-300 via-yellow-200 to-revoada-300"></div>
+              <div class="relative">
+                <div class="flex items-start justify-between">
+                  <div class="text-center leading-none">
+                    <p id="card-overall" class="text-6xl font-black text-revoada-300">71</p>
+                    <p class="mt-1 text-sm font-bold tracking-widest">EXA</p>
+                    <i class="ti ti-feather mt-2 text-2xl text-yellow-200"></i>
+                  </div>
+                  <div class="grid h-28 w-28 place-items-center rounded-full border-4 border-revoada-300/60 bg-revoada-900 text-4xl font-black text-revoada-300">MS</div>
+                </div>
+                <p class="mt-4 border-b border-white/20 pb-2 text-center text-2xl font-extrabold uppercase tracking-wider">Maria Silva</p>
+                <div id="card-attrs" class="mt-3 grid grid-cols-2 gap-x-6 gap-y-1.5 text-lg"></div>
+                <p class="mt-4 text-center text-[11px] uppercase tracking-widest text-revoada-200">Nível 7 · 12 dias de sequência</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Radar -->
+          <section class="rounded border border-neutral-200 bg-white p-5">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p id="radar-crumb" class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Visão geral</p>
+                <h2 id="radar-title" class="text-lg font-bold">Hexágono de aptidões</h2>
+              </div>
+              <button id="radar-back" hidden class="flex items-center gap-1 rounded border border-neutral-300 px-3 py-1.5 text-sm font-semibold hover:bg-neutral-50"><i class="ti ti-arrow-left"></i> Voltar à visão geral</button>
+            </div>
+            <div class="mt-2 grid items-center gap-6 xl:grid-cols-[1fr_16rem]">
+              <svg id="radar" viewBox="0 0 440 400" class="mx-auto w-full max-w-lg" role="img" aria-label="Gráfico radar de aptidões"></svg>
+              <div class="space-y-4 text-sm">
+                <div>
+                  <p class="font-bold text-revoada-700"><i class="ti ti-trending-up"></i> Pontos fortes</p>
+                  <div id="strong" class="mt-2 flex flex-wrap gap-1.5"></div>
+                </div>
+                <div>
+                  <p class="font-bold text-amber-600"><i class="ti ti-refresh"></i> Vale revisar</p>
+                  <div id="weak" class="mt-2 flex flex-wrap gap-1.5"></div>
+                </div>
+                <p class="rounded bg-neutral-50 p-3 text-xs text-neutral-500"><i class="ti ti-info-circle"></i> A nota é uma média ponderada pela quantidade de questões. Com poucas questões respondidas, o valor aparece tracejado.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Disciplinas com detalhamento -->
+        <section class="rounded border border-neutral-200 bg-white">
+          <div class="border-b border-neutral-100 p-5">
+            <h2 class="font-bold">Por disciplina</h2>
+            <p class="text-sm text-neutral-500">Clique em uma disciplina para ver as notas de cada conhecimento dela.</p>
+          </div>
+          <div id="disciplinas" class="divide-y divide-neutral-100"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // [nome, sigla, ícone, cor, [[habilidade, nota, questões]]]
+    const data = [
+      ['Matemática', 'MAT', 'ti-math-function', '#0284c7', [['Funções', 85, 30], ['Trigonometria', 58, 18], ['Geometria plana', 80, 25], ['Porcentagem', 92, 20], ['Estatística', 70, 10]]],
+      ['Física', 'FÍS', 'ti-atom', '#7c3aed', [['MRU', 100, 40], ['MRUV', 94, 35], ['Leis de Newton', 91, 30], ['Espelhos', 52, 12], ['Termodinâmica', 65, 25]]],
+      ['Química', 'QUÍ', 'ti-flask', '#0d9488', [['Estequiometria', 55, 15], ['Ligações químicas', 72, 20], ['Soluções', 60, 10], ['Orgânica', 68, 12]]],
+      ['Biologia', 'BIO', 'ti-dna-2', '#65a30d', [['Citologia', 80, 20], ['Genética', 62, 15], ['Ecologia', 75, 18], ['Fisiologia', 66, 10]]],
+      ['História', 'HIS', 'ti-building-bank', '#d97706', [['Brasil Colônia', 50, 12], ['Era Vargas', 70, 15], ['Revolução Industrial', 55, 10], ['Guerra Fria', 60, 8]]],
+      ['Português', 'POR', 'ti-writing', '#e11d48', [['Interpretação', 82, 30], ['Gramática', 60, 20], ['Literatura', 58, 12]]],
+    ];
+    const prev = [74, 83, 61, 70, 52, 66]; // 30 dias atrás
+    const LOW_CONFIDENCE = 12;
+
+    const score = (skills) => {
+      const n = skills.reduce((s, [, , q]) => s + q, 0);
+      return Math.round(skills.reduce((s, [, v, q]) => s + v * q, 0) / n);
+    };
+    const disc = data.map(([nome, sigla, icon, cor, skills]) => ({ nome, sigla, icon, cor, skills, nota: score(skills) }));
+    const overall = Math.round(disc.reduce((s, d) => s + d.nota, 0) / disc.length);
+
+    // Card
+    document.getElementById('card-overall').textContent = overall;
+    document.getElementById('card-attrs').innerHTML = disc
+      .map((d) => `<p><b class="inline-block w-9 font-black">${d.nota}</b><span class="text-sm font-semibold text-revoada-100">${d.sigla}</span></p>`)
+      .join('');
+
+    // Radar
+    const svg = document.getElementById('radar');
+    const cx = 220, cy = 200, R = 140;
+    const pt = (i, n, v) => {
+      const a = -Math.PI / 2 + (i * 2 * Math.PI) / n;
+      return [cx + Math.cos(a) * R * (v / 100), cy + Math.sin(a) * R * (v / 100)];
+    };
+    const poly = (vals) => vals.map((v, i) => pt(i, vals.length, v).join(',')).join(' ');
+
+    function drawRadar(labels, values, previous, lowConf = []) {
+      const n = labels.length;
+      let s = '';
+      [20, 40, 60, 80, 100].forEach((r) => {
+        s += `<polygon points="${poly(Array(n).fill(r))}" fill="${r === 100 ? '#f8faf7' : 'none'}" stroke="#e5e5e5" stroke-width="1"/>`;
+      });
+      for (let i = 0; i < n; i++) {
+        const [x, y] = pt(i, n, 100);
+        s += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#e5e5e5"/>`;
+      }
+      if (previous) s += `<polygon points="${poly(previous)}" fill="none" stroke="#a3a3a3" stroke-width="1.5" stroke-dasharray="5 4"/>`;
+      s += `<polygon points="${poly(values)}" fill="#87E174" fill-opacity=".35" stroke="#154324" stroke-width="2.5" stroke-linejoin="round"/>`;
+      values.forEach((v, i) => {
+        const [x, y] = pt(i, n, v);
+        const low = lowConf[i];
+        s += `<circle cx="${x}" cy="${y}" r="5" fill="${low ? '#fff' : '#154324'}" stroke="#154324" stroke-width="2" ${low ? 'stroke-dasharray="2 2"' : ''}/>`;
+        const [lx, ly] = pt(i, n, 124);
+        const anchor = Math.abs(lx - cx) < 8 ? 'middle' : lx > cx ? 'start' : 'end';
+        s += `<text x="${lx}" y="${ly - 2}" text-anchor="${anchor}" font-family="Montserrat" font-size="12" font-weight="600" fill="#525252">${labels[i]}</text>`;
+        s += `<text x="${lx}" y="${ly + 16}" text-anchor="${anchor}" font-family="Montserrat" font-size="15" font-weight="800" fill="${v < 60 ? '#d97706' : '#154324'}">${v}</text>`;
+      });
+      svg.innerHTML = s;
+    }
+
+    const chip = (t, strong) =>
+      `<span class="rounded px-2 py-1 text-xs font-semibold ${strong ? 'bg-revoada-50 text-revoada-800' : 'bg-amber-50 text-amber-700'}">${t}</span>`;
+
+    function showOverview() {
+      drawRadar(disc.map((d) => d.nome), disc.map((d) => d.nota), prev);
+      document.getElementById('radar-title').textContent = 'Hexágono de aptidões';
+      document.getElementById('radar-crumb').textContent = 'Visão geral · média ' + overall;
+      document.getElementById('radar-back').hidden = true;
+      const sorted = [...disc].sort((a, b) => b.nota - a.nota);
+      document.getElementById('strong').innerHTML = sorted.slice(0, 2).map((d) => chip(`${d.nome} ${d.nota}`, true)).join('');
+      document.getElementById('weak').innerHTML = sorted.slice(-2).map((d) => chip(`${d.nome} ${d.nota}`, false)).join('');
+    }
+
+    function showDiscipline(i) {
+      const d = disc[i];
+      drawRadar(d.skills.map((s) => s[0]), d.skills.map((s) => s[1]), null, d.skills.map((s) => s[2] < LOW_CONFIDENCE));
+      document.getElementById('radar-title').textContent = `${d.nome}: ${d.nota}`;
+      document.getElementById('radar-crumb').textContent = 'Visão geral › ' + d.nome;
+      document.getElementById('radar-back').hidden = false;
+      const sorted = [...d.skills].sort((a, b) => b[1] - a[1]);
+      document.getElementById('strong').innerHTML = sorted.filter((s) => s[1] >= 75).map((s) => chip(`${s[0]} ${s[1]}`, true)).join('') || '<span class="text-xs text-neutral-400">Ainda não</span>';
+      document.getElementById('weak').innerHTML = sorted.filter((s) => s[1] < 65).map((s) => chip(`${s[0]} ${s[1]}`, false)).join('') || '<span class="text-xs text-neutral-400">Nada por aqui</span>';
+      renderList(i);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderList(open) {
+      document.getElementById('disciplinas').innerHTML = disc
+        .map((d, i) => `
+        <div>
+          <button data-i="${i}" class="disc flex w-full items-center gap-4 p-4 text-left hover:bg-neutral-50">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded text-xl text-white" style="background:${d.cor}"><i class="ti ${d.icon}"></i></span>
+            <span class="w-32 font-semibold">${d.nome}</span>
+            <span class="h-2 flex-1 rounded-full bg-neutral-100"><span class="block h-2 rounded-full" style="width:${d.nota}%;background:${d.cor}"></span></span>
+            <span class="w-10 text-right text-lg font-extrabold">${d.nota}</span>
+            <i class="ti ti-chevron-down text-neutral-400 transition ${open === i ? 'rotate-180' : ''}"></i>
+          </button>
+          ${open === i ? `
+          <div class="bg-neutral-50 px-4 pb-5 pt-1 sm:pl-[4.5rem]">
+            <p class="mb-3 text-sm text-neutral-500"><b class="text-neutral-800">${d.nome}: ${d.nota}</b> = ${d.skills.map((s) => `${s[0]}: ${s[1]}`).join(' + ')}</p>
+            <ul class="grid gap-3 sm:grid-cols-2">
+              ${d.skills.map(([h, v, q]) => `
+              <li class="rounded border ${q < LOW_CONFIDENCE ? 'border-dashed border-neutral-300' : 'border-neutral-200'} bg-white p-3">
+                <div class="flex items-center justify-between text-sm"><span class="font-semibold">${h}</span><b class="${v < 60 ? 'text-amber-600' : 'text-revoada-800'}">${v}</b></div>
+                <div class="mt-2 h-1.5 rounded-full bg-neutral-100"><div class="h-1.5 rounded-full ${v < 60 ? 'bg-amber-400' : 'bg-revoada-500'}" style="width:${v}%"></div></div>
+                <div class="mt-2 flex items-center justify-between text-xs text-neutral-500">
+                  <span>${q} questões${q < LOW_CONFIDENCE ? ' · <span class="text-amber-600">poucos dados</span>' : ''}</span>
+                  ${v < 65 ? '<a href="testes.html" class="font-semibold text-revoada-700 hover:underline">Praticar</a>' : ''}
+                </div>
+              </li>`).join('')}
+            </ul>
+          </div>` : ''}
+        </div>`)
+        .join('');
+      document.querySelectorAll('.disc').forEach((b) =>
+        b.addEventListener('click', () => {
+          const i = Number(b.dataset.i);
+          if (open === i) { showOverview(); renderList(null); } else showDiscipline(i);
+        })
+      );
+    }
+
+    document.getElementById('radar-back').addEventListener('click', () => { showOverview(); renderList(null); });
+    showOverview();
+    renderList(null);
+  </script>
+  <script src="assets/layout.js"></script>
+</body>
+</html>

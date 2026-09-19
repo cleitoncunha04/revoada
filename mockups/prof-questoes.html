@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Revoada · Banco de questões</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/config.js"></script>
+  <link rel="stylesheet" href="assets/base.css" />
+</head>
+<body data-page="questoes" class="bg-[#f6f6f4] font-sans text-neutral-800">
+  <div class="flex min-h-screen">
+    <aside id="sidebar"></aside>
+    <div class="min-w-0 flex-1">
+      <header id="topbar"></header>
+
+      <main class="mx-auto max-w-7xl space-y-6 px-4 py-8 lg:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="text-sm font-semibold text-revoada-700"><i class="ti ti-presentation"></i> Estúdio do professor</p>
+            <h1 class="mt-1 text-2xl font-bold sm:text-3xl">Banco de questões</h1>
+          </div>
+          <div class="flex gap-2">
+            <button class="flex items-center gap-1.5 rounded border border-neutral-300 bg-white px-4 py-2.5 text-sm font-semibold hover:bg-neutral-50"><i class="ti ti-file-import"></i> Importar CSV</button>
+            <button class="flex items-center gap-1.5 rounded border border-neutral-300 bg-white px-4 py-2.5 text-sm font-semibold hover:bg-neutral-50"><i class="ti ti-clipboard-plus"></i> Montar teste</button>
+          </div>
+        </div>
+
+        <div class="grid gap-6 xl:grid-cols-[1fr_30rem]">
+          <!-- Lista -->
+          <section class="rounded border border-neutral-200 bg-white">
+            <div class="flex flex-wrap gap-2 border-b border-neutral-100 p-4">
+              <label class="field dense has-prefix min-w-48 flex-1">
+                <i class="field-prefix ti ti-search"></i>
+                <input placeholder=" " class="field-control" />
+                <span class="field-label">Buscar no enunciado</span>
+              </label>
+              <label class="field dense"><select class="field-control"><option>Física</option></select><span class="field-label">Disciplina</span></label>
+              <label class="field dense"><select class="field-control"><option>Todas</option></select><span class="field-label">Habilidade</span></label>
+              <label class="field dense"><select class="field-control"><option>Qualquer</option></select><span class="field-label">Dificuldade</span></label>
+            </div>
+            <ul class="divide-y divide-neutral-100 text-sm">
+              <li class="flex gap-4 bg-revoada-50/60 p-4">
+                <span class="mt-0.5 h-full w-1 self-stretch rounded bg-revoada-800"></span>
+                <div class="min-w-0 flex-1">
+                  <p class="line-clamp-2 font-medium">Um gás ideal recebe 500 J de calor e realiza 200 J de trabalho. Qual a variação da energia interna?</p>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-xs">
+                    <span class="rounded bg-violet-100 px-2 py-0.5 font-semibold text-violet-700">1ª lei da termodinâmica</span>
+                    <span class="rounded bg-neutral-100 px-2 py-0.5">Média</span>
+                    <span class="rounded bg-neutral-100 px-2 py-0.5">Múltipla escolha</span>
+                  </div>
+                </div>
+                <div class="shrink-0 text-right text-xs text-neutral-500"><p><b class="text-neutral-800">68%</b> acertam</p><p>1.204 respostas</p></div>
+              </li>
+              <li class="flex gap-4 p-4 hover:bg-neutral-50">
+                <span class="w-1"></span>
+                <div class="min-w-0 flex-1">
+                  <p class="line-clamp-2 font-medium">Segundo a 2ª lei da termodinâmica, é correto afirmar que uma máquina térmica…</p>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-xs">
+                    <span class="rounded bg-violet-100 px-2 py-0.5 font-semibold text-violet-700">2ª lei e entropia</span>
+                    <span class="rounded bg-neutral-100 px-2 py-0.5">Difícil</span>
+                  </div>
+                </div>
+                <div class="shrink-0 text-right text-xs text-neutral-500"><p><b class="text-amber-600">31%</b> acertam</p><p>980 respostas</p></div>
+              </li>
+              <li class="flex gap-4 p-4 hover:bg-neutral-50">
+                <span class="w-1"></span>
+                <div class="min-w-0 flex-1">
+                  <p class="line-clamp-2 font-medium">Em uma transformação isobárica, o volume de um gás dobra. O que acontece com sua temperatura absoluta?</p>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-xs">
+                    <span class="rounded bg-violet-100 px-2 py-0.5 font-semibold text-violet-700">Transformações gasosas</span>
+                    <span class="rounded bg-neutral-100 px-2 py-0.5">Fácil</span>
+                  </div>
+                </div>
+                <div class="shrink-0 text-right text-xs text-neutral-500"><p><b class="text-neutral-800">84%</b> acertam</p><p>1.530 respostas</p></div>
+              </li>
+              <li class="flex gap-4 p-4 hover:bg-neutral-50">
+                <span class="w-1"></span>
+                <div class="min-w-0 flex-1">
+                  <p class="line-clamp-2 font-medium">Um espelho côncavo tem distância focal de 20 cm. Um objeto a 30 cm do espelho forma uma imagem…</p>
+                  <div class="mt-2 flex flex-wrap gap-1.5 text-xs">
+                    <span class="rounded bg-violet-100 px-2 py-0.5 font-semibold text-violet-700">Espelhos</span>
+                    <span class="rounded bg-sky-100 px-2 py-0.5 font-semibold text-sky-700">Funções</span>
+                    <span class="rounded bg-neutral-100 px-2 py-0.5">Média</span>
+                  </div>
+                </div>
+                <div class="shrink-0 text-right text-xs text-neutral-500"><p><b class="text-neutral-800">57%</b> acertam</p><p>640 respostas</p></div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Editor -->
+          <section class="h-fit rounded border border-neutral-200 bg-white xl:sticky xl:top-20">
+            <div class="flex items-center justify-between border-b border-neutral-100 p-4">
+              <h2 class="font-bold">Editar questão</h2>
+              <div class="flex gap-1">
+                <button class="grid h-8 w-8 place-items-center rounded hover:bg-neutral-100" aria-label="Duplicar"><i class="ti ti-copy"></i></button>
+                <button class="grid h-8 w-8 place-items-center rounded text-rose-600 hover:bg-rose-50" aria-label="Arquivar"><i class="ti ti-archive"></i></button>
+              </div>
+            </div>
+            <form class="space-y-4 p-4 text-sm" onsubmit="event.preventDefault()">
+              <label class="field">
+                <div class="field-control !p-0">
+                  <div class="flex gap-1 border-b border-neutral-200 px-1 pb-1 pt-2 text-neutral-500">
+                    <button type="button" class="grid h-7 w-7 place-items-center rounded hover:bg-neutral-100"><i class="ti ti-bold"></i></button>
+                    <button type="button" class="grid h-7 w-7 place-items-center rounded hover:bg-neutral-100"><i class="ti ti-italic"></i></button>
+                    <button type="button" class="grid h-7 w-7 place-items-center rounded hover:bg-neutral-100"><i class="ti ti-math"></i></button>
+                    <button type="button" class="grid h-7 w-7 place-items-center rounded hover:bg-neutral-100"><i class="ti ti-photo"></i></button>
+                  </div>
+                  <textarea rows="3" class="block w-full resize-y bg-transparent px-3.5 py-2.5 outline-none">Um gás ideal recebe 500 J de calor de uma fonte externa e, ao mesmo tempo, realiza 200 J de trabalho sobre o ambiente. Qual a variação da energia interna do gás?</textarea>
+                </div>
+                <span class="field-label">Enunciado</span>
+              </label>
+
+              <div>
+                <span class="font-semibold">Alternativas <span class="font-normal text-neutral-500">(marque a correta)</span></span>
+                <div class="mt-3 space-y-3">
+                  <div class="flex items-center gap-2"><input type="radio" name="c" class="accent-revoada-800" /><label class="field dense flex-1"><input value="700 J" placeholder=" " class="field-control" /><span class="field-label">Alternativa A</span></label></div>
+                  <div class="flex items-center gap-2"><input type="radio" name="c" checked class="accent-revoada-800" /><label class="field dense has-suffix flex-1" style="--field-bg:#f1faee"><input value="300 J" placeholder=" " class="field-control !border-revoada-600 bg-revoada-50" /><span class="field-label !text-revoada-700">Alternativa B · correta</span><i class="field-suffix ti ti-circle-check-filled !text-revoada-600"></i></label></div>
+                  <div class="flex items-center gap-2"><input type="radio" name="c" class="accent-revoada-800" /><label class="field dense flex-1"><input value="−300 J" placeholder=" " class="field-control" /><span class="field-label">Alternativa C</span></label></div>
+                  <div class="flex items-center gap-2"><input type="radio" name="c" class="accent-revoada-800" /><label class="field dense flex-1"><input value="200 J" placeholder=" " class="field-control" /><span class="field-label">Alternativa D</span></label></div>
+                  <div class="flex items-center gap-2"><input type="radio" name="c" class="accent-revoada-800" /><label class="field dense flex-1"><input value="0 J, pois o processo é isotérmico" placeholder=" " class="field-control" /><span class="field-label">Alternativa E</span></label></div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <label class="field">
+                  <div class="field-control flex flex-wrap items-center gap-1"><span class="rounded bg-violet-100 px-2 py-0.5 text-xs font-semibold text-violet-700">1ª lei <i class="ti ti-x"></i></span></div>
+                  <span class="field-label">Habilidades</span>
+                </label>
+                <label class="field"><select class="field-control"><option>Média</option></select><span class="field-label">Dificuldade</span></label>
+              </div>
+
+              <label class="field">
+                <textarea rows="2" placeholder=" " class="field-control">ΔU = Q − W = 500 − 200 = 300 J.</textarea>
+                <span class="field-label">Explicação</span>
+                <span class="field-helper">Aparece para o aluno na revisão dos erros</span>
+              </label>
+
+              <div class="flex justify-end gap-2 border-t border-neutral-100 pt-4">
+                <button class="rounded border border-neutral-300 px-4 py-2 font-semibold hover:bg-neutral-50">Cancelar</button>
+                <button class="rounded bg-revoada-800 px-4 py-2 font-semibold text-white hover:bg-revoada-700">Salvar</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <button class="fixed bottom-16 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-revoada-800 text-2xl text-white shadow-xl hover:bg-revoada-700 lg:right-6" aria-label="Nova questão" title="Nova questão">
+    <i class="ti ti-plus"></i>
+  </button>
+
+  <script src="assets/layout.js"></script>
+</body>
+</html>
