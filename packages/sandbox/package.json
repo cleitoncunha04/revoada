@@ -1,0 +1,14 @@
+{
+	"name": "@revoada/sandbox",
+	"version": "0.0.0",
+	"description": "Projeto de sandbox para testar e experimentar funcionalidades do Revoada.",
+	"private": true,
+	"scripts": {
+		"test": "vitest run",
+		"typecheck": "tsc --noEmit"
+	},
+	"type": "module",
+	"devDependencies": {
+		"vitest": "^5.0.1"
+	}
+}

@@ -1,0 +1,38 @@
+{
+	"name": "revoada",
+	"version": "0.0.0",
+	"description": "Plataforma aberta e gamificada em que professores do IFSP publicam seus materiais de ensino e qualquer pessoa pode estudar, seguir trilhas de aprendizagem e colocar os conhecimentos à prova.",
+	"private": true,
+	"scripts": {
+		"lint": "pnpm exec biome lint",
+		"format": "pnpm exec biome format --write",
+		"check": "pnpm exec biome check",
+		"check:fix": "pnpm exec biome check --fix",
+		"test": "pnpm -r test",
+		"typecheck": "pnpm -r typecheck"
+	},
+	"keywords": [],
+	"author": {
+		"name": "Cleiton dos Santos Cunha",
+		"email": "cleiton_sc_04@hotmail.com",
+		"url": "https://github.com/cleitoncunha04"
+	},
+	"license": "MIT",
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "12.4.2",
+			"onFail": "download"
+		}
+	},
+	"packageManager": "pnpm@12.4.2",
+	"type": "module",
+	"engines": {
+		"node": ">=24.21.0",
+		"pnpm": ">=12.4.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.14",
+		"typescript": "^7.0.2"
+	}
+}
