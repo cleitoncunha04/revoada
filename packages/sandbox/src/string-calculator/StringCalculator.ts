@@ -1,5 +1,9 @@
 export class StringCalculator {
 	static add(numbers: string): number {
-		return Number(numbers);
+    const delimiter = ",";
+
+    const numberArray = numbers.split(delimiter).map(Number);
+
+		return numberArray.reduce((sum, num) => sum + num, 0);
 	}
 }
