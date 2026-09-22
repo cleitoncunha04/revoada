@@ -1,9 +1,22 @@
 export class StringCalculator {
-	static add(numbers: string): number {
-		const customDelimiter = String.prototype.startsWith.call(numbers, "//") ? numbers[2] : null;
+	private static getDelimiter(numbers: string): {
+		delimiter: string | null;
+		endOfDelimiterIndex: number;
+	} {
+		const customDelimiter = String.prototype.startsWith.call(numbers, "//")
+			? numbers[2]
+			: null;
 
 		const endOfDelimiterIndex = customDelimiter ? numbers.indexOf("\n") : -1;
 
+		return { delimiter: customDelimiter ?? null, endOfDelimiterIndex };
+	}
+
+	private static getNumbersArray(
+		numbers: string,
+		customDelimiter: string | null,
+		endOfDelimiterIndex: number,
+	): number[] {
 		if (customDelimiter && endOfDelimiterIndex !== -1) {
 			numbers = numbers.substring(endOfDelimiterIndex + 1);
 
@@ -12,8 +25,33 @@ export class StringCalculator {
 
 		const delimiters = /[\n,\r]+/;
 
-		const numberArray = numbers.split(delimiters).map(Number);
+		return numbers.split(delimiters).map(Number);
+	}
 
-		return numberArray.reduce((sum, num) => sum + num, 0);
+	private static getNegativeNumbers(numbers: number[]): number[] {
+		return numbers.filter((num) => num < 0);
+	}
+
+	private static sum(numbers: number[]): number {
+		return numbers.reduce((sum, num) => sum + num, 0);
+	}
+
+	public static add(numbers: string): number {
+		const { delimiter: customDelimiter, endOfDelimiterIndex } =
+			this.getDelimiter(numbers);
+
+		const numberArray = this.getNumbersArray(
+			numbers,
+			customDelimiter,
+			endOfDelimiterIndex,
+		);
+
+		const negativeNumbers = this.getNegativeNumbers(numberArray);
+
+		if (negativeNumbers.length > 0) {
+			throw new Error(`Negatives not allowed: ${negativeNumbers.join(",")}`);
+		}
+
+		return this.sum(numberArray);
 	}
 }

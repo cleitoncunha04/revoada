@@ -25,4 +25,10 @@ describe("StringCalculator", () => {
 	it("should return the sum of numbers with a personalized delimiter", () => {
 		expect(StringCalculator.add("//.\n1.2")).toBe(3);
 	});
+
+	it("should return an exception for negative numbers", () => {
+		expect(() => StringCalculator.add("-1,2,-3")).toThrowError(
+			"Negatives not allowed: -1,-3"
+		);
+	});
 });
