@@ -10,7 +10,11 @@ describe("StringCalculator", () => {
 		expect(StringCalculator.add("5")).toBe(5);
 	});
 
-  it("should return the sum of two numbers", () => {
-    expect(StringCalculator.add("1,2")).toBe(3);
-  });
+	it("should return the sum of two numbers", () => {
+		expect(StringCalculator.add("1,2")).toBe(3);
+	});
+
+	it("should return the sum of multiple numbers", () => {
+		expect(StringCalculator.add("1,2,3,4, 5")).toBe(15);
+	});
 });
