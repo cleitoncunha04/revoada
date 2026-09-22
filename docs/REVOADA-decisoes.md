@@ -389,6 +389,7 @@ src/
 
 - **Preferência por classes.** O usuário **não gosta de exportar funções soltas** (`export function`).
 - **Classes estáticas** apenas para **utilitários puros** (mesma entrada, mesma saída, sem efeitos colaterais). Ex.: `SlugHelper.from(...)`, `DateHelper.startOfDay(...)`.
+  - Por isso, a regra **`complexity/noStaticOnlyClass` do Biome está desligada** no `biome.json`. Ela sugere trocar classes só com membros estáticos por funções soltas, o que vai contra essa convenção.
 - **Instâncias com injeção de dependência pelo construtor** para tudo que acessa o mundo externo: repositórios, clientes de banco, Redis, S3, assinatura e validação de JWT, relógio, hash de senha.
 - Camadas por serviço: `routes` → `controllers` → `services` → `repositories`. Sem exagerar na arquitetura.
 - **Contratos compartilhados** (tipos, schemas Zod, eventos) em `packages/contracts`, para quem publica e quem consome usarem o mesmo tipo.
@@ -592,6 +593,9 @@ Login, cadastro, **tabelas da identity**, S3/MinIO, Redis, broker, telas da REVO
 | 18/09/2026 | **Classes**; estáticas só para utilitários puros; injeção de dependência para o resto | Preferência do usuário + testabilidade |
 | 18/09/2026 | Modelagem em **dois níveis** (conceitual agora, detalhada por marco) | Evitar retrabalho |
 | 18/09/2026 | Pasta raiz movida para **`C:\Projects\revoada`** | Nome da pasta igual ao do projeto |
+| 21/09/2026 | Monorepo: **pnpm 12 + Node 24.21.0**, TypeScript 7 (`tsconfig.base.json` + `extends` por pacote), **Biome** (tabs, aspas duplas) e **Vitest 5** | Etapa 2 do M0 concluída |
+| 21/09/2026 | Regra `noStaticOnlyClass` do Biome **desligada** | Convenção do projeto: classes estáticas para utilitários puros |
+| 21/09/2026 | Testes **ao lado do código**, com sufixo `.test.ts`; arquivos em **PascalCase** com o nome da classe | Padronização |
 
 ---
 
