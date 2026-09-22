@@ -33,7 +33,7 @@ export class StringCalculator {
 	}
 
 	private static sum(numbers: number[]): number {
-		return numbers.reduce((sum, num) => sum + num, 0);
+		return numbers.reduce((sum, num) => (num > 1000 ? sum : num + sum), 0);
 	}
 
 	public static add(numbers: string): number {

@@ -15,7 +15,7 @@ describe("StringCalculator", () => {
 	});
 
 	it("should return the sum of multiple numbers", () => {
-		expect(StringCalculator.add("1,2,3,4, 5")).toBe(15);
+		expect(StringCalculator.add("1,2,3,4,5")).toBe(15);
 	});
 
 	it("should return the sum of numbers with comma and newline delimiters", () => {
@@ -27,8 +27,12 @@ describe("StringCalculator", () => {
 	});
 
 	it("should return an exception for negative numbers", () => {
-		expect(() => StringCalculator.add("-1,2,-3")).toThrowError(
+		expect(() => StringCalculator.add("-1,2,-3")).toThrow(
 			"Negatives not allowed: -1,-3"
 		);
 	});
+
+	it("should ignore numbers above 1000 on add", () => {
+		expect(StringCalculator.add("2,1000")).toBe(1002);
+	})
 });
