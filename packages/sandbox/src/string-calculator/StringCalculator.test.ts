@@ -21,4 +21,8 @@ describe("StringCalculator", () => {
 	it("should return the sum of numbers with comma and newline delimiters", () => {
 		expect(StringCalculator.add("1\n2,3")).toBe(6);
 	});
+
+	it("should return the sum of numbers with a personalized delimiter", () => {
+		expect(StringCalculator.add("//.\n1.2")).toBe(3);
+	});
 });
